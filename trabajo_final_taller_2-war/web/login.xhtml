@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="login" >
+            
+             <p:messages autoUpdate="true" />
+            
+            <p:panel header="Veterinaria: ' El mono feliz' " style=" text-align: center; width: 55%; margin:0 auto">
+                <img src="http://static.batanga.com/sites/default/files/styles/full/public/curiosidades.batanga.com/files/Curiosidades-interesantes-sobre-los-animales.jpg?itok=zQs4h5-U"  ></img>
+                <h:panelGrid columns="2" style="Center">
+                    
+                    <h:outputText value="Usuario"/>
+                    <p:inputText value="" required="true" />                    
+                    <h:outputText value="Contraseña"/>
+                    <p:password value="" required="true"/>
+                    <h:outputText value=""/>
+                    <p:commandButton value="Ingresar" 
+                                     
+                                     icon="ui-icon-person"
+                                     style="width: 100%"/>
+                </h:panelGrid>
+            </p:panel>
+            
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:body>
+        <p align="right"><p:link  outcome="menu" value="Menu"/> | <p:link  value="Logout"/></p>
+
+        <h:form id="busquedaAnimal" >
+            <p:messages autoUpdate="true" />
+            <p:panel  style=" text-align: center; width: 20%; margin: auto">
+                <h:panelGrid columns="3" style="Center">
+                    <h:outputText value="Nombre mascota"/>
+                    <p:inputText value="" />
+                    <p:commandButton value="Buscar"/>
+                </h:panelGrid>
+                <h:panelGrid  style="Center">
+                    <p:dataGrid>
+                        
+                    </p:dataGrid>
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+    </h:body>
+    </h:body>
+</html>
+

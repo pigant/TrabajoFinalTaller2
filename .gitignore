@@ -1,0 +1,15 @@
+/nbproject/
+/trabajo_final_taller_2-war/nbproject/
+/trabajo_final_taller_2-ejb/nbproject/
+
+/trabajo_final_taller_2-war/build/
+/trabajo_final_taller_2-ejb/build/
+/build/
+
+/trabajo_final_taller_2-war/dist/
+/trabajo_final_taller_2-ejb/dist/
+/dist/
+
+build.xml
+/trabajo_final_taller_2-war/build.xml
+/trabajo_final_taller_2-ejb/build.xml
