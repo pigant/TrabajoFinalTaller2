@@ -5,9 +5,12 @@
  */
 package cl.veterinaria.bean;
 
+import cl.veterinaria.entity.User;
+import cl.veterinaria.service.UserFacadeLocal;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import javax.ejb.EJB;
 
 /**
  *
@@ -17,19 +20,26 @@ import java.io.Serializable;
 @SessionScoped
 public class LoginBean implements Serializable {
 
-    private String usuarios;
+	@EJB
+	private UserFacadeLocal userFacade;
+
+    private User usuario;
     /**
      * Creates a new instance of LoginBean
      */
     public LoginBean() {
     }
 
-    public String getUsuarios() {
-        return usuarios;
+	public String ingresoLogin(){
+		return "menu";
+	}
+
+    public User getUsuarios() {
+        return usuario;
     }
 
-    public void setUsuarios(String usuarios) {
-        this.usuarios = usuarios;
+    public void setUsuarios(User user) {
+        this.usuario = user;
     }
     
 }
