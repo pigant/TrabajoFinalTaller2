@@ -11,6 +11,8 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -31,6 +33,10 @@ public class LoginBean implements Serializable {
     }
 
 	public String ingresoLogin(){
+		//Realizar comprobacion
+		//Comprobacion correcta
+		FacesContext.getCurrentInstance().addMessage(null, 
+				new FacesMessage("Ingreso correcto"));
 		return "menu";
 	}
 

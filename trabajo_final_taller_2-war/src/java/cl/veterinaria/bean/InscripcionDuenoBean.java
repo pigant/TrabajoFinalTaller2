@@ -5,8 +5,11 @@
  */
 package cl.veterinaria.bean;
 
+import cl.veterinaria.entity.Dueno;
 import cl.veterinaria.service.DuenoFacadeLocal;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 
@@ -31,6 +34,13 @@ public class InscripcionDuenoBean {
 	}
 
 	public String ingresarDueno(){
+		Dueno d = new Dueno();
+		d.setRut(rut);
+		d.setNombre(nombre);
+		d.setTelefono(telefono);
+		duenoFacade.create(d);
+		FacesContext.getCurrentInstance().addMessage(null, 
+				new FacesMessage("Dueno ingresado correctamente"));
 		return "menu";
 	}
 
