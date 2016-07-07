@@ -12,26 +12,26 @@
         <h:form id="ficha" >
             <p:messages autoUpdate="true" />
             <p:panel  style=" text-align: center; width: 40%; margin: auto">
-                <h:panelGrid columns="2" style="text-align: center; width: 70%; ">
-                    <h:outputText value="Nombre mascota : " style="float:  right" />
-                    <h:outputText  style="float: left"/>
-                    <h:outputText value="Raza : " style="float:  right" />
-                    <h:outputText style="float: left" />
-                    <h:outputText value="Sexo : " style="float:  right" />
-                    <h:outputText style="float: left" />
-                    <h:outputText value="Fecha Nacimiento : " style="float: right" />
-                    <h:outputText  style="float: left" />
-                    <h:outputText value="Raza : " style="float: right" />
-                    <h:outputText  style="float: left" />
-                </h:panelGrid>
+                <p:panelGrid columns="2" style="text-align: center; width: 70%; ">
+                    <p:outputLabel value="Nombre mascota : " style="float:  right" />
+                    <p:outputLabel  style="float: left"/>
+                    <p:outputLabel value="Raza : " style="float:  right" />
+                    <p:outputLabel style="float: left" />
+                    <p:outputLabel value="Sexo : " style="float:  right" />
+                    <p:outputLabel style="float: left" />
+                    <p:outputLabel value="Fecha Nacimiento : " style="float: right" />
+                    <p:outputLabel  style="float: left" />
+                    <p:outputLabel value="Raza : " style="float: right" />
+                    <p:outputLabel  style="float: left" />
+                </p:panelGrid>
                 <br></br>
 
                 <p:dataTable   style="Center">
                     <p:column headerText="Número Ficha">
-                        <h:outputText value="" />
+                        <p:outputLabel value="" />
                     </p:column>
                     <p:column headerText="Fecha">
-                        <h:outputText value="" />
+                        <p:outputLabel value="" />
                     </p:column>
                     <p:column headerText="Ver Detalle">
                         <p:commandButton>

@@ -13,26 +13,25 @@
         <h:form id="busquedaAnimal" >
             <p:messages autoUpdate="true" />
             <p:panel  style=" text-align: center; width: 40%; margin: auto">
-                <h:panelGrid columns="3" style="Center">
-                    <h:outputText value="Nombre mascota"/>
+                <p:panelGrid columns="3" style="Center">
+                    <p:outputLabel value="Nombre Mascota" />
                     <p:inputText value="" />
                     <p:commandButton value="Buscar"/>
-                </h:panelGrid>
+                </p:panelGrid>
                 <br></br>
-
                 <p:dataTable   style="Center">
                     <p:column headerText="Nombre mascota">
-                        <h:outputText value="" />
+                        <p:outputLabel value="" />
                     </p:column>
                     <p:column headerText="Rut Cliente">
-                        <h:outputText value="" />
+                        <p:outputLabel value="" />
                     </p:column>
                     <p:column headerText="ver ficha">
+                        <p:commandButton>
+
+                        </p:commandButton>
                     </p:column>
                 </p:dataTable>
-
-
-
             </p:panel>
         </h:form>
     </h:body>
