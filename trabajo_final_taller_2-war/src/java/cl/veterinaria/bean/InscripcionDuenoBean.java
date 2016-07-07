@@ -20,29 +20,54 @@ import javax.faces.view.ViewScoped;
  */
 @Named(value = "ingresoDuenoBean")
 @ViewScoped
-public class InscripcionDuenoBean implements Serializable{
+public class InscripcionDuenoBean implements Serializable {
 
 	@EJB
 	private DuenoFacadeLocal duenoFacade;
 
 	private int rut;
 	private String nombre;
-	private int telefono;
+	private Integer telefono;
+
 	/**
 	 * Creates a new instance of IngresoDuenoBean
 	 */
 	public InscripcionDuenoBean() {
 	}
 
-	public String ingresarDueno(){
-		Dueno d = new Dueno();
-		d.setRut(rut);
-		d.setNombre(nombre);
-		d.setTelefono(telefono);
-		duenoFacade.create(d);
-		FacesContext.getCurrentInstance().addMessage(null, 
-				new FacesMessage("Dueno ingresado correctamente"));
-		return "menu";
+	public String ingresarDueno() {
+		//Comprobaciones
+		boolean correcto = true;
+		correcto &= rutDisponible();
+		correcto &= !nombre.equals("");
+		correcto &= telefono != null;
+		//Correcto
+		if (correcto) {
+			Dueno d = new Dueno();
+			d.setRut(rut);
+			d.setNombre(nombre);
+			d.setTelefono(telefono);
+			duenoFacade.create(d);
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Dueno ingresado correctamente"));
+			return "menu";
+		}
+		//Incorrecto
+		else{
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Datos invalidos", "Debe rellenar todos los datos y no se pueden repetir los rut"));
+			return "";
+		}
+	}
+
+	public boolean rutDisponible() {
+		Dueno dueno = duenoFacade.find(rut);
+		if (dueno == null) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Rut disponible"));
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Rut ya existe", "Intene otro rut, ya que el ingresado ya existe"));
+		}
+		return dueno == null;
 	}
 
 	public int getRut() {
@@ -61,12 +86,12 @@ public class InscripcionDuenoBean implements Serializable{
 		this.nombre = nombre;
 	}
 
-	public int getTelefono() {
+	public Integer getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(Integer telefono) {
 		this.telefono = telefono;
 	}
-	
+
 }
