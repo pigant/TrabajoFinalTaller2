@@ -7,6 +7,8 @@ import cl.veterinaria.service.MascotaFacadeLocal;
 import java.io.Serializable;
 import java.util.Date;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 
@@ -16,7 +18,7 @@ import javax.faces.view.ViewScoped;
  */
 @Named(value = "ingresoMascotaBean")
 @ViewScoped
-public class InscripcionMascotaBean implements Serializable{
+public class InscripcionMascotaBean implements Serializable {
 
 	@EJB
 	private MascotaFacadeLocal mascotaFacade;
@@ -30,24 +32,58 @@ public class InscripcionMascotaBean implements Serializable{
 	private Date fechaNacimiento;
 	private int duenoId;
 	private Dueno dueno;
+
 	/**
 	 * Creates a new instance of IngresoMascotaBean
 	 */
 	public InscripcionMascotaBean() {
+		sexo = 'M';
 	}
 
-	public String ingresoMascota(){
-		Mascota m = new Mascota();
-		m.setNombre(nombre);
-		m.setSexo(sexo);
-		m.setFechaNacimiento(fechaNacimiento);
-		m.setDuenoId(dueno);
-		mascotaFacade.create(m);
-		return "menu";
+	public String ingresoMascota() {
+		//Comprobaciones
+		boolean correcto = true;
+		correcto &= !nombre.equals("");
+		correcto &= fechaNacimiento != null;
+		correcto &= dueno != null;
+		//Correcto
+		if (correcto) {
+			Mascota m = new Mascota();
+			m.setNombre(nombre);
+			m.setSexo(sexo);
+			m.setFechaNacimiento(fechaNacimiento);
+			m.setDuenoId(dueno);
+			mascotaFacade.create(m);
+			FacesContext.getCurrentInstance().
+					addMessage(null, new FacesMessage("Mascota ingresada"));
+			return "menu";
+		} //Incorrecto
+		else {
+			if (dueno == null) {
+				FacesContext.getCurrentInstance().
+						addMessage(null,
+								new FacesMessage(FacesMessage.SEVERITY_ERROR, "Dueño no existe", "Debe elegir un dueño que exista"));
+			} else {
+				FacesContext.getCurrentInstance().
+						addMessage(null,
+								new FacesMessage(FacesMessage.SEVERITY_ERROR, "Datos faltantes", "Debe completar todos los campos"));
+			}
+			return "";
+		}
 	}
 
-	public void buscarDueno(){
+	public void buscarDueno() {
 		dueno = duenoFacade.find(duenoId);
+		//dueno no encontrado
+		if (dueno == null) {
+			FacesContext.getCurrentInstance().
+					addMessage(null,
+							new FacesMessage(FacesMessage.SEVERITY_ERROR, "Dueño no encontrado", "Ingrese un rut existente"));
+		} //Dueno encontrado
+		else {
+			FacesContext.getCurrentInstance().
+					addMessage(null, new FacesMessage("Dueño encontrado"));
+		}
 	}
 
 	public String getNombre() {
@@ -89,5 +125,5 @@ public class InscripcionMascotaBean implements Serializable{
 	public void setDuenoId(int duenoId) {
 		this.duenoId = duenoId;
 	}
-	
+
 }
