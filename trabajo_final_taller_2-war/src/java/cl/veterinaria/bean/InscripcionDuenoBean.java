@@ -7,6 +7,7 @@ package cl.veterinaria.bean;
 
 import cl.veterinaria.entity.Dueno;
 import cl.veterinaria.service.DuenoFacadeLocal;
+import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -19,7 +20,7 @@ import javax.faces.view.ViewScoped;
  */
 @Named(value = "ingresoDuenoBean")
 @ViewScoped
-public class InscripcionDuenoBean {
+public class InscripcionDuenoBean implements Serializable{
 
 	@EJB
 	private DuenoFacadeLocal duenoFacade;

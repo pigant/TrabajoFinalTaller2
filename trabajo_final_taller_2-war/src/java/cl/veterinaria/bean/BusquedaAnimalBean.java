@@ -7,6 +7,7 @@ package cl.veterinaria.bean;
 
 import cl.veterinaria.entity.Mascota;
 import cl.veterinaria.service.MascotaFacadeLocal;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -18,7 +19,7 @@ import javax.faces.view.ViewScoped;
  */
 @Named(value = "busquedaAnimalBean")
 @ViewScoped
-public class BusquedaAnimalBean {
+public class BusquedaAnimalBean implements Serializable{
 
 	@EJB
 	private MascotaFacadeLocal mascotaFacade;

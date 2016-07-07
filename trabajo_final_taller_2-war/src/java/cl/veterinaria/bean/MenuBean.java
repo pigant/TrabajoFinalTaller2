@@ -5,6 +5,7 @@
  */
 package cl.veterinaria.bean;
 
+import java.io.Serializable;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 
@@ -14,7 +15,7 @@ import javax.faces.view.ViewScoped;
  */
 @Named(value = "menuBean")
 @ViewScoped
-public class MenuBean {
+public class MenuBean implements Serializable{
 
 	/**
 	 * Creates a new instance of MenuBean

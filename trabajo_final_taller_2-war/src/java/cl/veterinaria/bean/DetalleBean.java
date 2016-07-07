@@ -7,6 +7,7 @@ package cl.veterinaria.bean;
 
 import cl.veterinaria.entity.Ficha;
 import cl.veterinaria.service.FichaFacadeLocal;
+import java.io.Serializable;
 import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -20,7 +21,7 @@ import javax.faces.view.ViewScoped;
  */
 @Named(value = "detalleBean")
 @ViewScoped
-public class DetalleBean {
+public class DetalleBean implements Serializable{
 
 	@EJB
 	private FichaFacadeLocal fichaFacade;

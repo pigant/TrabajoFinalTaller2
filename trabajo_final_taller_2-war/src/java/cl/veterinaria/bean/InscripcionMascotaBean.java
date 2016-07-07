@@ -4,6 +4,7 @@ import cl.veterinaria.entity.Dueno;
 import cl.veterinaria.entity.Mascota;
 import cl.veterinaria.service.DuenoFacadeLocal;
 import cl.veterinaria.service.MascotaFacadeLocal;
+import java.io.Serializable;
 import java.util.Date;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -15,7 +16,7 @@ import javax.faces.view.ViewScoped;
  */
 @Named(value = "ingresoMascotaBean")
 @ViewScoped
-public class InscripcionMascotaBean {
+public class InscripcionMascotaBean implements Serializable{
 
 	@EJB
 	private MascotaFacadeLocal mascotaFacade;

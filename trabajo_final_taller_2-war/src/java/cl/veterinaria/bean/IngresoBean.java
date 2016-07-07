@@ -10,6 +10,7 @@ import cl.veterinaria.entity.Mascota;
 import cl.veterinaria.service.DuenoFacadeLocal;
 import cl.veterinaria.service.FichaFacadeLocal;
 import cl.veterinaria.service.MascotaFacadeLocal;
+import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
@@ -20,7 +21,7 @@ import javax.faces.view.ViewScoped;
  */
 @Named(value = "ingresoBean")
 @ViewScoped
-public class IngresoBean {
+public class IngresoBean implements Serializable{
 
 	@EJB
 	private DuenoFacadeLocal duenoFacade;

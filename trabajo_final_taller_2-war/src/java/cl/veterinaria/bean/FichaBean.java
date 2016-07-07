@@ -9,6 +9,7 @@ import cl.veterinaria.entity.Ficha;
 import cl.veterinaria.entity.Mascota;
 import cl.veterinaria.service.FichaFacadeLocal;
 import cl.veterinaria.service.MascotaFacadeLocal;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -20,7 +21,7 @@ import javax.faces.view.ViewScoped;
  */
 @Named(value = "fichaBean")
 @ViewScoped
-public class FichaBean {
+public class FichaBean implements Serializable{
 
 	@EJB
 	private FichaFacadeLocal fichaFacade;
