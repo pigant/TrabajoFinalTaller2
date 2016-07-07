@@ -19,7 +19,7 @@ import javax.faces.view.ViewScoped;
  */
 @Named(value = "busquedaAnimalBean")
 @ViewScoped
-public class BusquedaAnimalBean implements Serializable{
+public class BusquedaAnimalBean implements Serializable {
 
 	@EJB
 	private MascotaFacadeLocal mascotaFacade;
@@ -34,8 +34,8 @@ public class BusquedaAnimalBean implements Serializable{
 	public BusquedaAnimalBean() {
 	}
 
-	public void buscarMascota(){
-
+	public void buscarMascota() {
+		listaMascotas = mascotaFacade.findLikeNombre(nombre + '%');
 	}
 
 	public String getNombre() {
@@ -49,5 +49,5 @@ public class BusquedaAnimalBean implements Serializable{
 	public List<Mascota> getListaMascotas() {
 		return listaMascotas;
 	}
-	
+
 }

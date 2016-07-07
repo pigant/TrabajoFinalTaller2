@@ -40,5 +40,12 @@ public class MascotaFacade extends AbstractFacade<Mascota> implements MascotaFac
 		return (List<Mascota>) q.getResultList();
 
 	}
+
+	@Override
+	public List<Mascota> findLikeNombre(String nombre){
+		Query q = getEntityManager().createNamedQuery("Mascota.findLikeNombre")
+				.setParameter("nombre", nombre);
+		return (List<Mascota>) q.getResultList();
+	}
 	
 }

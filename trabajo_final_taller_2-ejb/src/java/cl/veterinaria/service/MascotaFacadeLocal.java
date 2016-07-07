@@ -31,5 +31,7 @@ public interface MascotaFacadeLocal {
 	int count();
 
 	public List<Mascota> findByDuenoId(int mascotaId);
+
+	public List<Mascota> findLikeNombre(String nombre);
 	
 }
