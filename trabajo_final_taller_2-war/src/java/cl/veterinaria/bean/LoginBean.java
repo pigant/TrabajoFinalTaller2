@@ -3,10 +3,10 @@ package cl.veterinaria.bean;
 import cl.veterinaria.entity.User;
 import cl.veterinaria.service.UserFacadeLocal;
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 /**
