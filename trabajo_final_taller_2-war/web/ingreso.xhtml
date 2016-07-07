@@ -2,30 +2,41 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-	  xmlns:f="http://xmlns.jcp.org/jsf/core"
-	  xmlns:p="http://primefaces.org/ui">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-		<p:panelGrid columns="1">
-			<h:form id="formulario">
-				<p:panelGrid columns="4">
-					<p:outputLabel value="Dueno: " for="dueno"/>
-					<p:inputText id="dueno" value="#{ingresoBean.duenoId}">
-						<p:ajax listener="#{ingresoBean.buscarMascotas()}" event="keyup" update="combobox"/>
-					</p:inputText>
-					<h:outputText value="Mascota: "/>
-					<p:selectOneMenu id="combobox" value="#{ingresoBean.mascotaId}">
-						<f:selectItem itemLabel="Seleccione mascota ,,," itemValue="#{null}"/>
-						<f:selectItems value="#{ingresoBean.listaMascota}" var="lm"
-									   itemLabel="#{lm.nombre}" itemValue="#{lm.mascotaId}"/>
-						<p:ajax listener="#{ingresoBean.seleccionarMascota()}" update="formulario"/>
-					</p:selectOneMenu>
-					<p:outputLabel id="nombremascota" value="#{ingresoBean.mascota.nombre}"/>
-				</p:panelGrid>
-			</h:form>
-		</p:panelGrid>
+        <p align="right"><p:link  outcome="menu" value="Menu"/> | <p:link outcome="login" value="Logout"/></p>
+
+        <h:form id="ingreso" >
+            <p:messages autoUpdate="true" />
+            <p:panel  style=" text-align: center; width: 60%; margin: auto">
+                <p:panelGrid columns="4" style="Center">
+                    <p:outputLabel value="Dueno: " for="dueno"/>
+                    <p:inputText id="dueno" value="#{ingresoBean.duenoId}" >
+                        <p:ajax listener="#{ingresoBean.buscarMascotas()}" event="keyup" update="combobox"/>
+                    </p:inputText>
+                    <p:commandButton value="Buscar mascota"/>
+                    <p:selectOneMenu id="combobox" value="#{ingresoBean.mascotaId}" style="width: 110%">
+                        <f:selectItem itemLabel="Seleccione mascota " itemValue="#{null}" />
+                        <f:selectItems value="#{ingresoBean.listaMascota}" var="lm"
+                                       itemLabel="#{lm.nombre}" itemValue="#{lm.mascotaId}"/>
+                        <p:ajax listener="#{ingresoBean.seleccionarMascota()}" update="ingreso"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel id="nombremascota" value="#{ingresoBean.mascota.nombre}"/>
+                </p:panelGrid> 
+                <br></br>
+                <p:panelGrid columns="2">
+                    <h:outputText value="Diagnóstico : "/>
+                    <h:outputText value=""/>
+                    <h:outputText value="Recetario : "/>
+                    <h:outputText value=""/>
+                </p:panelGrid>
+            </p:panel>
+        </h:form>
     </h:body>
+
 </html>
 

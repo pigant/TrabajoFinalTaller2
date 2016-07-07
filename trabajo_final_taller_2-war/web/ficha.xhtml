@@ -7,11 +7,43 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-		<p:dataTable value="#{fichaBean.listaFichas}" var="f">
-			<p:column headerText="Numero Ficha">
-				<p:outputLabel value="#{f.fichaId}"/>
-			</p:column>
-		</p:dataTable>
+        <p align="right"><p:link  outcome="menu" value="Menu"/> | <p:link outcome="busquedaAnimal" value="Volver a Búsqueda"/> | <p:link  outcome="login" value="Logout"/></p>
+
+        <h:form id="ficha" >
+            <p:messages autoUpdate="true" />
+            <p:panel  style=" text-align: center; width: 40%; margin: auto">
+                <h:panelGrid columns="2" style="text-align: center; width: 70%; ">
+                    <h:outputText value="Nombre mascota : " style="float:  right" />
+                    <h:outputText  style="float: left"/>
+                    <h:outputText value="Raza : " style="float:  right" />
+                    <h:outputText style="float: left" />
+                    <h:outputText value="Sexo : " style="float:  right" />
+                    <h:outputText style="float: left" />
+                    <h:outputText value="Fecha Nacimiento : " style="float: right" />
+                    <h:outputText  style="float: left" />
+                    <h:outputText value="Raza : " style="float: right" />
+                    <h:outputText  style="float: left" />
+                </h:panelGrid>
+                <br></br>
+
+                <p:dataTable   style="Center">
+                    <p:column headerText="Número Ficha">
+                        <h:outputText value="" />
+                    </p:column>
+                    <p:column headerText="Fecha">
+                        <h:outputText value="" />
+                    </p:column>
+                    <p:column headerText="Ver Detalle">
+                        <p:commandButton>
+                            
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+
+
+
+            </p:panel>
+        </h:form>
     </h:body>
 </html>
 

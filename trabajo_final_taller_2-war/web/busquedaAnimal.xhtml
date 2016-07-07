@@ -8,35 +8,33 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <h:body>
-            <p align="right"><p:link  outcome="menu" value="Menu"/> | <p:link  value="Logout"/></p>
+        <p align="right"><p:link  outcome="menu" value="Menu"/> | <p:link outcome="login" value="Logout"/></p>
 
-            <h:form id="busquedaAnimal" >
-                <p:messages autoUpdate="true" />
-                <p:panel  style=" text-align: center; width: 40%; margin: auto">
-                    <h:panelGrid columns="3" style="Center">
-                        <h:outputText value="Nombre mascota"/>
-                        <p:inputText value="" />
-                        <p:commandButton value="Buscar"/>
-                    </h:panelGrid>
-                    <br></br>
+        <h:form id="busquedaAnimal" >
+            <p:messages autoUpdate="true" />
+            <p:panel  style=" text-align: center; width: 40%; margin: auto">
+                <h:panelGrid columns="3" style="Center">
+                    <h:outputText value="Nombre mascota"/>
+                    <p:inputText value="" />
+                    <p:commandButton value="Buscar"/>
+                </h:panelGrid>
+                <br></br>
 
-                    <p:dataTable   style="Center">
-                        <p:column headerText="Nombre mascota">
-                            <h:outputText value="" />
-                        </p:column>
-                        <p:column headerText="Rut Cliente">
-                            <h:outputText value="" />
-                        </p:column>
-                        <p:column headerText="ver ficha">
-                        </p:column>
-                    </p:dataTable>
-
+                <p:dataTable   style="Center">
+                    <p:column headerText="Nombre mascota">
+                        <h:outputText value="" />
+                    </p:column>
+                    <p:column headerText="Rut Cliente">
+                        <h:outputText value="" />
+                    </p:column>
+                    <p:column headerText="ver ficha">
+                    </p:column>
+                </p:dataTable>
 
 
-                </p:panel>
-            </h:form>
-        </h:body>
+
+            </p:panel>
+        </h:form>
     </h:body>
 </html>
 
