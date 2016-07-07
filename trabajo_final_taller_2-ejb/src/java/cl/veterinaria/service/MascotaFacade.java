@@ -5,10 +5,14 @@
  */
 package cl.veterinaria.service;
 
+import cl.veterinaria.entity.Dueno;
 import cl.veterinaria.entity.Mascota;
+import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +31,14 @@ public class MascotaFacade extends AbstractFacade<Mascota> implements MascotaFac
 
 	public MascotaFacade() {
 		super(Mascota.class);
+	}
+
+	@Override
+	public List<Mascota> findByDuenoId(int duenoId){
+		Query q = getEntityManager().createNamedQuery("Mascota.findByDuenoId")
+				.setParameter("duenoId", duenoId);
+		return (List<Mascota>) q.getResultList();
+
 	}
 	
 }

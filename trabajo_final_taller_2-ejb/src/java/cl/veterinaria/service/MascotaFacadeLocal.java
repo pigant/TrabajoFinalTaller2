@@ -29,5 +29,7 @@ public interface MascotaFacadeLocal {
 	List<Mascota> findRange(int[] range);
 
 	int count();
+
+	public List<Mascota> findByDuenoId(int mascotaId);
 	
 }
