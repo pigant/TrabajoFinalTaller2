@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cl.veterinaria.service;
 
 import cl.veterinaria.entity.Ficha;
@@ -32,11 +27,11 @@ public class FichaFacade extends AbstractFacade<Ficha> implements FichaFacadeLoc
 	}
 
 	@Override
-	public List<Ficha> findByMascotaId(int mascotaId){
+	public List<Ficha> findByMascotaId(int mascotaId) {
 		Query q = getEntityManager()
 				.createNamedQuery("Ficha.findByMascotaId")
 				.setParameter("mascotaId", mascotaId);
 		return (List<Ficha>) q.getResultList();
 	}
-	
+
 }

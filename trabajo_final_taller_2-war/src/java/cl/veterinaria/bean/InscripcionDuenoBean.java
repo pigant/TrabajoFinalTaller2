@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cl.veterinaria.bean;
 
 import cl.veterinaria.entity.Dueno;
@@ -51,9 +46,8 @@ public class InscripcionDuenoBean implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Dueno ingresado correctamente"));
 			return "menu";
-		}
-		//Incorrecto
-		else{
+		} //Incorrecto
+		else {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Datos invalidos", "Debe rellenar todos los datos y no se pueden repetir los rut"));
 			return "";

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cl.veterinaria.service;
 
 import cl.veterinaria.entity.User;
@@ -31,11 +26,11 @@ public class UserFacade extends AbstractFacade<User> implements UserFacadeLocal 
 	}
 
 	@Override
-	public User findByUserAndPass(String username, String password){
+	public User findByUserAndPass(String username, String password) {
 		Query q = getEntityManager().createNamedQuery("User.findByUserAndPass");
 		q.setParameter("username", username);
 		q.setParameter("password", password);
 		return (User) q.getSingleResult();
 	}
-	
+
 }

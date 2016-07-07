@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cl.veterinaria.entity;
 
 import java.io.Serializable;
@@ -35,15 +30,15 @@ public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "user_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Basic(optional = false)
+	@Column(name = "user_id")
 	private Integer userId;
 	@Size(max = 60)
-    @Column(name = "username")
+	@Column(name = "username")
 	private String username;
 	@Size(max = 60)
-    @Column(name = "password")
+	@Column(name = "password")
 	private String password;
 
 	public User() {
@@ -101,5 +96,5 @@ public class User implements Serializable {
 	public String toString() {
 		return "cl.veterinaria.entity.User[ userId=" + userId + " ]";
 	}
-	
+
 }

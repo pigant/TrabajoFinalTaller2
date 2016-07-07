@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cl.veterinaria.service;
 
 import cl.veterinaria.entity.Dueno;
@@ -34,7 +29,7 @@ public class MascotaFacade extends AbstractFacade<Mascota> implements MascotaFac
 	}
 
 	@Override
-	public List<Mascota> findByDuenoId(int duenoId){
+	public List<Mascota> findByDuenoId(int duenoId) {
 		Query q = getEntityManager().createNamedQuery("Mascota.findByDuenoId")
 				.setParameter("duenoId", duenoId);
 		return (List<Mascota>) q.getResultList();
@@ -42,10 +37,10 @@ public class MascotaFacade extends AbstractFacade<Mascota> implements MascotaFac
 	}
 
 	@Override
-	public List<Mascota> findLikeNombre(String nombre){
+	public List<Mascota> findLikeNombre(String nombre) {
 		Query q = getEntityManager().createNamedQuery("Mascota.findLikeNombre")
 				.setParameter("nombre", nombre);
 		return (List<Mascota>) q.getResultList();
 	}
-	
+
 }

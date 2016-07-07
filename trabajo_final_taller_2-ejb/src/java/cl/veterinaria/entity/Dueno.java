@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cl.veterinaria.entity;
 
 import java.io.Serializable;
@@ -36,12 +31,12 @@ public class Dueno implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "rut")
+	@Basic(optional = false)
+	@NotNull
+	@Column(name = "rut")
 	private Integer rut;
 	@Size(max = 60)
-    @Column(name = "nombre")
+	@Column(name = "nombre")
 	private String nombre;
 	@Column(name = "telefono")
 	private Integer telefono;
@@ -112,5 +107,5 @@ public class Dueno implements Serializable {
 	public String toString() {
 		return "cl.veterinaria.entity.Dueno[ rut=" + rut + " ]";
 	}
-	
+
 }

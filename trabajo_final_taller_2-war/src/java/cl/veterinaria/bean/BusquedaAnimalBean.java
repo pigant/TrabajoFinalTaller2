@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cl.veterinaria.bean;
 
 import cl.veterinaria.entity.Mascota;
@@ -38,8 +33,8 @@ public class BusquedaAnimalBean implements Serializable {
 		listaMascotas = mascotaFacade.findLikeNombre(nombre + '%');
 	}
 
-	public String verFicha(int mascotaId){
-		return "ficha.xhtml?faces-redirect=true&mascota="+ mascotaId;
+	public String verFicha(int mascotaId) {
+		return "ficha.xhtml?faces-redirect=true&mascota=" + mascotaId;
 	}
 
 	public String getNombre() {

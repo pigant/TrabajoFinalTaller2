@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cl.veterinaria.entity;
 
 import java.io.Serializable;
@@ -40,23 +35,23 @@ public class Ficha implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "ficha_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Basic(optional = false)
+	@Column(name = "ficha_id")
 	private Integer fichaId;
 	@Lob
-    @Size(max = 65535)
-    @Column(name = "diagnostico")
+	@Size(max = 65535)
+	@Column(name = "diagnostico")
 	private String diagnostico;
 	@Lob
-    @Size(max = 65535)
-    @Column(name = "recetario")
+	@Size(max = 65535)
+	@Column(name = "recetario")
 	private String recetario;
 	@Column(name = "fecha")
-    @Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.DATE)
 	private Date fecha;
 	@JoinColumn(name = "mascota_id", referencedColumnName = "mascota_id")
-    @ManyToOne
+	@ManyToOne
 	private Mascota mascotaId;
 
 	public Ficha() {
@@ -130,5 +125,5 @@ public class Ficha implements Serializable {
 	public String toString() {
 		return "cl.veterinaria.entity.Ficha[ fichaId=" + fichaId + " ]";
 	}
-	
+
 }

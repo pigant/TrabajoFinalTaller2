@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cl.veterinaria.bean;
 
 import cl.veterinaria.entity.Dueno;
@@ -15,7 +10,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -76,9 +70,8 @@ public class IngresoBean implements Serializable {
 			FacesContext.getCurrentInstance()
 					.addMessage(null, new FacesMessage("Ficha creada correctamente"));
 			return "menu";
-		}
-		//negativo
-		else{
+		} //negativo
+		else {
 			FacesContext.getCurrentInstance()
 					.addMessage(null, new FacesMessage("Datos faltantes"));
 			return "";
