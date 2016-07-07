@@ -9,6 +9,7 @@ import cl.veterinaria.entity.User;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +28,14 @@ public class UserFacade extends AbstractFacade<User> implements UserFacadeLocal 
 
 	public UserFacade() {
 		super(User.class);
+	}
+
+	@Override
+	public User findByUserAndPass(String username, String password){
+		Query q = getEntityManager().createNamedQuery("User.findByUserAndPass");
+		q.setParameter("username", username);
+		q.setParameter("password", password);
+		return (User) q.getSingleResult();
 	}
 	
 }

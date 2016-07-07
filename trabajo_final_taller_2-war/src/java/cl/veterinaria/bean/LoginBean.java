@@ -30,14 +30,25 @@ public class LoginBean implements Serializable {
      * Creates a new instance of LoginBean
      */
     public LoginBean() {
+		usuario = new User();
     }
 
 	public String ingresoLogin(){
 		//Realizar comprobacion
+		usuario = userFacade.findByUserAndPass(
+				usuario.getUsername(), usuario.getPassword());
 		//Comprobacion correcta
-		FacesContext.getCurrentInstance().addMessage(null, 
-				new FacesMessage("Ingreso correcto"));
-		return "menu";
+		if(usuario != null){
+			FacesContext.getCurrentInstance().addMessage(null, 
+					new FacesMessage("Ingreso correcto"));
+			return "menu";
+		}
+		else{
+			FacesContext.getCurrentInstance().addMessage(null, 
+					new FacesMessage("Usuario no existente"));
+			return "";
+
+		}
 	}
 
     public User getUsuarios() {
