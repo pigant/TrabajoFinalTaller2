@@ -11,7 +11,10 @@ import cl.veterinaria.service.FichaFacadeLocal;
 import cl.veterinaria.service.MascotaFacadeLocal;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 
@@ -21,7 +24,7 @@ import javax.faces.view.ViewScoped;
  */
 @Named(value = "fichaBean")
 @ViewScoped
-public class FichaBean implements Serializable{
+public class FichaBean implements Serializable {
 
 	@EJB
 	private FichaFacadeLocal fichaFacade;
@@ -39,8 +42,18 @@ public class FichaBean implements Serializable{
 	public FichaBean() {
 	}
 
-	public String verDetalle(int detalleId){
-		return "detalle.xhtml?faces-redirect=true&detalle="+detalleId;
+	@PostConstruct
+	public void init() {
+		Map<String, String> mapa = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		if (mapa.containsKey("mascota")) {
+			int mascota = Integer.valueOf(mapa.get("mascota"));
+			listaFichas = fichaFacade.findByMascotaId(mascota);
+		}
+
+	}
+
+	public String verDetalle(int detalleId) {
+		return "detalle.xhtml?faces-redirect=true&detalle=" + detalleId;
 	}
 
 	public Mascota getMascota() {
@@ -58,5 +71,5 @@ public class FichaBean implements Serializable{
 	public void setListaFichas(List<Ficha> listaFichas) {
 		this.listaFichas = listaFichas;
 	}
-	
+
 }

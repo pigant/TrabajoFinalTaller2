@@ -38,6 +38,10 @@ public class BusquedaAnimalBean implements Serializable {
 		listaMascotas = mascotaFacade.findLikeNombre(nombre + '%');
 	}
 
+	public String verFicha(int mascotaId){
+		return "ficha.xhtml?faces-redirect=true&mascota="+ mascotaId;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}

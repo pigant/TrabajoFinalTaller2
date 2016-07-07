@@ -29,5 +29,7 @@ public interface FichaFacadeLocal {
 	List<Ficha> findRange(int[] range);
 
 	int count();
+
+	public List<Ficha> findByMascotaId(int mascotaId);
 	
 }

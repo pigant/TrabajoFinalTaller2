@@ -21,12 +21,13 @@ import javax.faces.view.ViewScoped;
  */
 @Named(value = "detalleBean")
 @ViewScoped
-public class DetalleBean implements Serializable{
+public class DetalleBean implements Serializable {
 
 	@EJB
 	private FichaFacadeLocal fichaFacade;
 
 	private Ficha ficha;
+
 	/**
 	 * Creates a new instance of DetalleBean
 	 */
@@ -34,10 +35,12 @@ public class DetalleBean implements Serializable{
 	}
 
 	@PostConstruct
-	public void init(){
+	public void init() {
 		Map<String, String> mapa = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-		int detalle = Integer.valueOf(mapa.get("detalle"));
-		ficha = fichaFacade.find(detalle);
+		if (mapa.containsKey("detalle")) {
+			int detalle = Integer.valueOf(mapa.get("detalle"));
+			ficha = fichaFacade.find(detalle);
+		}
 	}
-	
+
 }
