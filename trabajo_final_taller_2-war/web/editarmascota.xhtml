@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+		<p align="right">
+			<p:link  outcome="menu" value="Menu"/> 
+		</p>
+		<h:form id="formulario">
+			<p:panelGrid columns="1">
+				<p:dataTable id="tabla" editable="true" var="m" value="#{editarMascotaBean.listaMascota}" editMode="cell">
+					<p:ajax event="cellEdit" listener="#{editarMascotaBean.onCellEdit}"/>
+					<p:column headerText="Nombre">
+						<p:cellEditor>
+							<f:facet name="output">
+								<p:outputLabel value="#{m.nombre}"/>
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{m.nombre}"/>
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="Raza">
+						<p:cellEditor>
+							<f:facet name="output">
+								<p:outputLabel value="#{m.raza}"/>
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText value="#{m.raza}"/>
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="Sexo">
+						<p:cellEditor>
+							<f:facet name="output">
+								<p:selectOneRadio value="#{m.sexo}">
+									<f:selectItem itemLabel="Masculino" itemValue="M"/>
+									<f:selectItem itemLabel="Femenino" itemValue="F"/>
+								</p:selectOneRadio>
+							</f:facet>
+							<f:facet name="input">
+								<p:selectOneRadio value="#{m.sexo}">
+									<f:selectItem itemLabel="Masculino" itemValue="M"/>
+									<f:selectItem itemLabel="Femenino" itemValue="F"/>
+								</p:selectOneRadio>
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="Fecha nacimiento">
+						<p:cellEditor>
+							<f:facet name="output">
+								<p:outputLabel value="#{m.fechaNacimiento}">
+									<f:convertDateTime pattern="dd-MM-yyyy"/>
+								</p:outputLabel>
+							</f:facet>
+							<f:facet name="input">
+								<p:calendar id="calendario" value="#{m.fechaNacimiento}" 
+											pattern="dd-MM-yyyy" mask="true" navigator="true" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="Eliminar">
+						<p:commandButton icon="ui-icon-trash" actionListener="#{editarMascotaBean.eliminarMascota(m.mascotaId)}" update=":formulario:tabla"/>
+					</p:column>
+				</p:dataTable>
+			</p:panelGrid>
+		</h:form>
+    </h:body>
+</html>
+
+
