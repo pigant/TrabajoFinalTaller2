@@ -16,6 +16,12 @@ create table dueno (
 		constraint primary key (rut)
 		);
 
+create table tipo_animal (
+		tipo_animal_id int auto_increment,
+		nombre varchar(60),
+		constraint primary key (tipo_animal_id)
+		);
+
 create table mascota (
 		mascota_id int auto_increment,
 		nombre varchar(60),
@@ -27,12 +33,6 @@ create table mascota (
 		constraint primary key (mascota_id),
 		constraint foreign key (dueno_id) references dueno(rut),
 		constraint foreign key (tipo_animal_id) references tipo_animal(tipo_animal_id)
-		);
-
-create table tipo_animal (
-		tipo_animal_id int,
-		nombre varchar(60),
-		constraint primary key (tipo_animal_id)
 		);
 
 create table ficha (
@@ -47,3 +47,6 @@ create table ficha (
 
 insert into user (username, password) values 
 		('ignacio', '1234'), ('mario', '1234'), ('felipe', '1234');
+
+insert into tipo_animal (nombre) values 
+		( 'Perro'), ('Gato'), ('Pato'), ('Chancho'), ('Lagarto');

@@ -1,8 +1,12 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package cl.veterinaria.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,17 +17,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ignacio
+ * @author Sistemas
  */
 @Entity
 @Table(name = "mascota")
@@ -31,32 +33,35 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
 	@NamedQuery(name = "Mascota.findAll", query = "SELECT m FROM Mascota m"),
 	@NamedQuery(name = "Mascota.findByMascotaId", query = "SELECT m FROM Mascota m WHERE m.mascotaId = :mascotaId"),
-	@NamedQuery(name = "Mascota.findByDuenoId", query = "SELECT m FROM Mascota m WHERE m.duenoId.rut = :duenoId"),
 	@NamedQuery(name = "Mascota.findByNombre", query = "SELECT m FROM Mascota m WHERE m.nombre = :nombre"),
-	@NamedQuery(name = "Mascota.findLikeNombre", query = "SELECT m FROM Mascota m WHERE m.nombre like :nombre"),
+	@NamedQuery(name = "Mascota.findByRaza", query = "SELECT m FROM Mascota m WHERE m.raza = :raza"),
 	@NamedQuery(name = "Mascota.findBySexo", query = "SELECT m FROM Mascota m WHERE m.sexo = :sexo"),
 	@NamedQuery(name = "Mascota.findByFechaNacimiento", query = "SELECT m FROM Mascota m WHERE m.fechaNacimiento = :fechaNacimiento")})
 public class Mascota implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Basic(optional = false)
-	@Column(name = "mascota_id")
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Basic(optional = false)
+        @Column(name = "mascota_id")
 	private Integer mascotaId;
 	@Size(max = 60)
-	@Column(name = "nombre")
+        @Column(name = "nombre")
 	private String nombre;
+	@Size(max = 60)
+        @Column(name = "raza")
+	private String raza;
 	@Column(name = "sexo")
 	private Character sexo;
 	@Column(name = "fecha_nacimiento")
-	@Temporal(TemporalType.DATE)
+        @Temporal(TemporalType.DATE)
 	private Date fechaNacimiento;
-	@OneToMany(mappedBy = "mascotaId")
-	private List<Ficha> fichaList;
 	@JoinColumn(name = "dueno_id", referencedColumnName = "rut")
-	@ManyToOne
+        @ManyToOne
 	private Dueno duenoId;
+	@JoinColumn(name = "tipo_animal_id", referencedColumnName = "tipo_animal_id")
+        @ManyToOne
+	private TipoAnimal tipoAnimalId;
 
 	public Mascota() {
 	}
@@ -81,6 +86,14 @@ public class Mascota implements Serializable {
 		this.nombre = nombre;
 	}
 
+	public String getRaza() {
+		return raza;
+	}
+
+	public void setRaza(String raza) {
+		this.raza = raza;
+	}
+
 	public Character getSexo() {
 		return sexo;
 	}
@@ -97,21 +110,20 @@ public class Mascota implements Serializable {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	@XmlTransient
-	public List<Ficha> getFichaList() {
-		return fichaList;
-	}
-
-	public void setFichaList(List<Ficha> fichaList) {
-		this.fichaList = fichaList;
-	}
-
 	public Dueno getDuenoId() {
 		return duenoId;
 	}
 
 	public void setDuenoId(Dueno duenoId) {
 		this.duenoId = duenoId;
+	}
+
+	public TipoAnimal getTipoAnimalId() {
+		return tipoAnimalId;
+	}
+
+	public void setTipoAnimalId(TipoAnimal tipoAnimalId) {
+		this.tipoAnimalId = tipoAnimalId;
 	}
 
 	@Override
@@ -138,5 +150,5 @@ public class Mascota implements Serializable {
 	public String toString() {
 		return "cl.veterinaria.entity.Mascota[ mascotaId=" + mascotaId + " ]";
 	}
-
+	
 }
