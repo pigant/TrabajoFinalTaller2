@@ -5,32 +5,35 @@
       xmlns:p="http://primefaces.org/ui"
 	  xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Ficha de Mascota</title>
     </h:head>
     <h:body>
-        <p align="right">
-			<p:link  outcome="menu" value="Menu"/> 
-			| <p:link outcome="busquedaAnimal" value="Volver a Búsqueda"/> 
-			| <p:link  outcome="login" value="Logout"/></p>
-
-        <h:form id="ficha" >
+        <h:panelGroup layout="block" style="width:80%; margin: 0 auto; text-align: center;">
+            <p align="right"><p:link  outcome="menu" value="Menu"/> | <p:link outcome="busquedaAnimal" value="Volver a Búsqueda"/> | <p:link  outcome="login" value="Cerrar Sesion"/></p>
+            <p:graphicImage  style="margin: 0 auto;" url="./photos/banner.jpg"/>
+            <br/>
+            <br/>
+            <br/>
+            
+            <h:form id="ficha" >
             <p:messages autoUpdate="true" />
-            <p:panel  style=" text-align: center; width: 80%; margin: auto">
-                <p:panelGrid columns="2" style="text-align: center; width: 70%; ">
-                    <p:outputLabel value="Nombre mascota : " style="float:  right" />
-                    <p:outputLabel value="#{fichaBean.mascota.nombre}" style="float: left"/>
-                    <p:outputLabel value="Clase animal : " style="float:  right" />
-                    <p:outputLabel value="#{fichaBean.mascota.tipoAnimalId.nombre}" style="float: left" />
-                    <p:outputLabel value="Raza : " style="float:  right" />
-                    <p:outputLabel value="#{fichaBean.mascota.raza}" style="float: left" />
-                    <p:outputLabel value="Sexo : " style="float:  right" />
-                    <p:outputLabel value="#{fichaBean.parsearSexo()}" style="float: left" />
-                    <p:outputLabel value="Fecha Nacimiento : " style="float: right" />
-                    <p:outputLabel value="#{fichaBean.mascota.fechaNacimiento}" style="float: left" >
-						<f:convertDateTime pattern="dd-MM-yyyy"/>
-					</p:outputLabel>
-                    <p:outputLabel value="Dueño : " style="float: right" />
-                    <p:outputLabel value="#{fichaBean.mascota.duenoId.nombre}" style="float: left" />
+            <h:panelGroup  style=" text-align: center; width: 80%; margin: auto">
+                <p:panelGrid columns="2" style="text-align: center; width: 100%; ">
+                    
+                    <p:outputLabel value="Nombre mascota : " style="float:  left" />
+                        <p:outputLabel value="#{fichaBean.mascota.nombre}" style="float: left"/>
+                    <p:outputLabel value="Clase animal : " style="float:  left" />
+                        <p:outputLabel value="#{fichaBean.mascota.tipoAnimalId.nombre}" style="float: left" />
+                    <p:outputLabel value="Raza : " style="float:  left" />
+                        <p:outputLabel value="#{fichaBean.mascota.raza}" style="float: left" />
+                    <p:outputLabel value="Sexo : " style="float:  left" />
+                        <p:outputLabel value="#{fichaBean.parsearSexo()}" style="float: left" />
+                    <p:outputLabel value="Fecha Nacimiento : " style="float: left" />
+                        <p:outputLabel value="#{fichaBean.mascota.fechaNacimiento}" style="float: left" >
+				<f:convertDateTime pattern="dd-MM-yyyy"/>
+        		</p:outputLabel>
+                    <p:outputLabel value="Dueño : " style="float: left" />
+                        <p:outputLabel value="#{fichaBean.mascota.duenoId.nombre}" style="float: left" />
                 </p:panelGrid>
                 <br></br>
 
@@ -48,8 +51,9 @@
 										  style="display: block; margin: auto"/>
                     </p:column>
                 </p:dataTable>
-            </p:panel>
+            </h:panelGroup>
         </h:form>
+        </h:panelGroup>
     </h:body>
 </html>
 

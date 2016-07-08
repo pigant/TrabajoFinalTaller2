@@ -5,43 +5,54 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Inscripcion mascota</title>
     </h:head>
     <h:body>
-        <p align="right"><p:link  outcome="menu" value="Menu"/> | <p:link outcome="login" value="Logout"/></p>
-        <h:form id="inscripcionMascota" >
-            <p:messages autoUpdate="true" />
-            <p:panel  style=" text-align: center; width: 39%; margin: auto">
-                <p:growl id="growl"/>
-                <h1 align="left">Mascota</h1>
-                <p:panelGrid columns="1">
-                    <p:panelGrid columns="2">
-                        <p:outputLabel value="Nombre: " style="float: right" />
-                        <p:inputText value="#{ingresoMascotaBean.nombre}" style="width: 100%"/>
-                        <p:outputLabel value="Clase Animal: " style="float: right" />
-						<p:selectOneMenu value="#{ingresoMascotaBean.tipoAnimalId}" style="width: 100%">
-							<f:selectItems var="t" value="#{ingresoMascotaBean.clasesAnimales}"
-										   itemLabel="#{t.nombre}" itemValue="#{t.tipoAnimalId}"/>
-						</p:selectOneMenu>
-                        <p:outputLabel value="Raza : " style="float: right" />
-                        <p:inputText value="#{ingresoMascotaBean.raza}" style="width: 100%"/>
-                        <p:outputLabel value="Sexo : " style="float: right" />
-						<p:selectOneRadio value="#{ingresoMascotaBean.sexo}">
-							<f:selectItem itemLabel="Masculino" itemValue="M"/>
-							<f:selectItem itemLabel="Femenino" itemValue="F"/>
-						</p:selectOneRadio>
-                        <p:outputLabel value="Fecha Nacimiento : " style="float: right" />
-						<p:calendar id="calendario" value="#{ingresoMascotaBean.fechaNacimiento}" 
-									pattern="dd-MM-yyyy" mask="true" navigator="true" />
-                        <p:outputLabel value="Dueño :  " />
-                        <p:inputText value="#{ingresoMascotaBean.duenoId}" style="width: 100%">
-							<p:ajax event="keyup" listener="#{ingresoMascotaBean.buscarDueno()}"/>
-						</p:inputText>
-                    </p:panelGrid>
-                </p:panelGrid>
-				<p:commandButton value="Ingreso" action="#{ingresoMascotaBean.ingresoMascota()}" update="inscripcionMascota"/>
-            </p:panel>
-        </h:form>
+        <h:panelGroup layout="block" style="width:80%; margin: 0 auto; text-align: center;">
+            <p align="right"><p:link  outcome="menu" value="Volver a Menu"/> | <p:link outcome="login" value="Cerrar Sesion"/></p>
+            <p:graphicImage  style="margin: 0 auto;" url="./photos/banner.jpg"/>
+            <h:form id="inscripcionMascota" >
+                <p:messages autoUpdate="true" />
+                <h:panelGroup  style=" text-align: center; width: 70%; margin: auto">
+                    <p:growl id="growl"/>
+                    <br/>
+                    <p:outputLabel value="Inscripcion de Mascota" style="font-size: 2em"/>
+                    <br/>
+                    <h:panelGrid columns="1" style="text-align: center; margin: auto">
+                        <h:panelGrid columns="4" style="text-align: left">
+
+                                <p:outputLabel value="Nombre: "/>
+                                    <p:inputText value="#{ingresoMascotaBean.nombre}" style="width: 250px"/>
+
+                                <p:outputLabel value="Clase Animal: "/>
+                                    <p:selectOneMenu value="#{ingresoMascotaBean.tipoAnimalId}" style="width: 221px">
+                                            <f:selectItems var="t" value="#{ingresoMascotaBean.clasesAnimales}"
+                                                                       itemLabel="#{t.nombre}" itemValue="#{t.tipoAnimalId}"/>
+                                    </p:selectOneMenu>
+
+                                <p:outputLabel value="Raza : "/>
+                                    <p:inputText value="#{ingresoMascotaBean.raza}" style="width: 250px"/>
+
+                                <p:outputLabel value="Sexo : "/>
+                                    <p:selectOneRadio value="#{ingresoMascotaBean.sexo}">
+                                            <f:selectItem itemLabel="Masculino" itemValue="M"/>
+                                            <f:selectItem itemLabel="Femenino" itemValue="F"/>
+                                    </p:selectOneRadio>
+                                <p:outputLabel value="Fecha Nacimiento : "/>
+                                    <p:calendar id="calendario" value="#{ingresoMascotaBean.fechaNacimiento}"  style="width: 250px"
+                                                                                pattern="dd-MM-yyyy" mask="true" navigator="true" />
+                                <p:outputLabel value="Dueño :  " />
+                                    <p:inputText value="#{ingresoMascotaBean.duenoId}" style="width: 250px">
+                                        <p:ajax event="keyup" listener="#{ingresoMascotaBean.buscarDueno()}"/>
+                                    </p:inputText>
+
+                        </h:panelGrid>
+                        <p:commandButton value="Ingreso" action="#{ingresoMascotaBean.ingresoMascota()}" update="inscripcionMascota"/>
+                    </h:panelGrid>
+                    <p:graphicImage  style="margin: 0 auto;" url="./photos/paws.png"/>
+                </h:panelGroup>
+            </h:form>
+        </h:panelGroup>
     </h:body>
 </html>
 

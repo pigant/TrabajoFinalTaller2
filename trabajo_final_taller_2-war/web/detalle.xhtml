@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
 	  xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Detalles</title>
 		<script>
             function volver() {
                 var ll = document.referrer;
@@ -17,29 +17,31 @@
 		</script>
     </h:head>
     <h:body>
-		<p align="right"><p:link  outcome="menu" value="Menu"/> | <p:link  value="Volver a Ficha" 
-		   onclick="prevent(event)" onmousedown="volver()"/> | <p:link outcome="login" value="Logout"/></p>
-
-        <h:form id="detalle" >
-            <p:messages autoUpdate="true" />
-            <p:panel  style=" text-align: center; width: 60%; margin: auto">
-                <br></br>
-                <p:panelGrid columns="2">
-                    <p:outputLabel value="Nombre Mascota : " style="float: right" />
-                    <p:outputLabel value="#{detalleBean.ficha.mascotaId.nombre}"/>
-                    <p:outputLabel value="Clase de animal : " style="float: right" />
-                    <p:outputLabel value="#{detalleBean.ficha.mascotaId.tipoAnimalId.nombre}"/>
-                    <p:outputLabel value="Fecha : " style="float: right" />
-                    <p:outputLabel value="#{detalleBean.ficha.fecha}">
-						<f:convertDateTime pattern="dd-MM-yyyy"/>
-					</p:outputLabel>
-                    <p:outputLabel value="Diagnóstico : " style="float: right" />
-                    <p:outputLabel value="#{detalleBean.ficha.diagnostico}"/>
-                    <p:outputLabel value="Recetario : " style="float: right" />
-                    <p:outputLabel value="#{detalleBean.ficha.recetario}"/>
-                </p:panelGrid>
-            </p:panel>
-        </h:form>
+	<h:panelGroup layout="block" style="width:80%; margin: 0 auto; text-align: center;">
+            <p align="right"><p:link  outcome="menu" value="Volver a Menu"/> | <p:link  value="Volver a Ficha" onclick="prevent(event)" onmousedown="volver()"/> | <p:link outcome="login" value="Cerrar Sesion"/></p>
+            <p:graphicImage  style="margin: 0 auto;" url="./photos/banner.jpg"/>
+            <br/>
+            <br/>
+            <br/>
+            <h:form id="detalle" >
+                <p:messages autoUpdate="true" />
+                
+                    <p:panelGrid columns="2" style="width:60%; margin: 0 auto; text-align: left;">
+                        <p:outputLabel value="Nombre Mascota : " style="float: left" />
+                        <p:outputLabel value="#{detalleBean.ficha.mascotaId.nombre}"/>
+                        <p:outputLabel value="Clase de animal : " style="float: left" />
+                        <p:outputLabel value="#{detalleBean.ficha.mascotaId.tipoAnimalId.nombre}"/>
+                        <p:outputLabel value="Fecha : " style="float: left" />
+                        <p:outputLabel value="#{detalleBean.ficha.fecha}">
+                                                    <f:convertDateTime pattern="dd-MM-yyyy"/>
+                                            </p:outputLabel>
+                        <p:outputLabel value="Diagnóstico : " style="float: left" />
+                        <p:outputLabel value="#{detalleBean.ficha.diagnostico}"/>
+                        <p:outputLabel value="Recetario : " style="float: left" />
+                        <p:outputLabel value="#{detalleBean.ficha.recetario}"/>
+                    </p:panelGrid>
+            </h:form>
+        </h:panelGroup>
     </h:body>
 </html>
 
