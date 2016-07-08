@@ -26,7 +26,7 @@
             <h:form id="detalle" >
                 <p:messages autoUpdate="true" />
                 
-                    <p:panelGrid columns="2" style="width:60%; margin: 0 auto; text-align: center;">
+                    <p:panelGrid columns="2" style="width:60%; margin: 0 auto; text-align: left;">
                         <p:outputLabel value="Nombre Mascota : " style="float: left" />
                         <p:outputLabel value="#{detalleBean.ficha.mascotaId.nombre}"/>
                         <p:outputLabel value="Clase de animal : " style="float: left" />
@@ -40,7 +40,6 @@
                         <p:outputLabel value="Recetario : " style="float: left" />
                         <p:outputLabel value="#{detalleBean.ficha.recetario}"/>
                     </p:panelGrid>
-
             </h:form>
         </h:panelGroup>
     </h:body>
