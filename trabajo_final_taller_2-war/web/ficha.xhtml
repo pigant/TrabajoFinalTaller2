@@ -7,11 +7,43 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-		<p:dataTable value="#{fichaBean.listaFichas}" var="f">
-			<p:column headerText="Numero Ficha">
-				<p:outputLabel value="#{f.fichaId}"/>
-			</p:column>
-		</p:dataTable>
+        <p align="right"><p:link  outcome="menu" value="Menu"/> | <p:link outcome="busquedaAnimal" value="Volver a Búsqueda"/> | <p:link  outcome="login" value="Logout"/></p>
+
+        <h:form id="ficha" >
+            <p:messages autoUpdate="true" />
+            <p:panel  style=" text-align: center; width: 40%; margin: auto">
+                <p:panelGrid columns="2" style="text-align: center; width: 70%; ">
+                    <p:outputLabel value="Nombre mascota : " style="float:  right" />
+                    <p:outputLabel  style="float: left"/>
+                    <p:outputLabel value="Raza : " style="float:  right" />
+                    <p:outputLabel style="float: left" />
+                    <p:outputLabel value="Sexo : " style="float:  right" />
+                    <p:outputLabel style="float: left" />
+                    <p:outputLabel value="Fecha Nacimiento : " style="float: right" />
+                    <p:outputLabel  style="float: left" />
+                    <p:outputLabel value="Raza : " style="float: right" />
+                    <p:outputLabel  style="float: left" />
+                </p:panelGrid>
+                <br></br>
+
+                <p:dataTable   style="Center">
+                    <p:column headerText="Número Ficha">
+                        <p:outputLabel value="" />
+                    </p:column>
+                    <p:column headerText="Fecha">
+                        <p:outputLabel value="" />
+                    </p:column>
+                    <p:column headerText="Ver Detalle">
+                        <p:commandButton>
+                            
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+
+
+
+            </p:panel>
+        </h:form>
     </h:body>
 </html>
 

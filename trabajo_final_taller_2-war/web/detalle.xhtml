@@ -1,12 +1,30 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
-    <h:body>
-        Hello from Facelets
+     <h:body>
+         <p align="right"><p:link  outcome="menu" value="Menu"/> | <p:link  outcome="ficha" value="Volver a Ficha"/> | <p:link outcome="login" value="Logout"/></p>
+
+        <h:form id="detalle" >
+            <p:messages autoUpdate="true" />
+            <p:panel  style=" text-align: center; width: 60%; margin: auto">
+                <br></br>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Nombre Mascota : " style="float: right" />
+                    <p:outputLabel value=""/>
+                    <p:outputLabel value="Fecha : " style="float: right" />
+                    <p:outputLabel value=""/>
+                    <p:outputLabel value="Diagnóstico : " style="float: right" />
+                    <p:outputLabel value=""/>
+                    <p:outputLabel value="Recetario : " style="float: right" />
+                    <p:outputLabel value=""/>
+                </p:panelGrid>
+            </p:panel>
+        </h:form>
     </h:body>
 </html>
 
