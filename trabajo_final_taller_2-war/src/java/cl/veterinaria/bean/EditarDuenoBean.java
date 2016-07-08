@@ -53,9 +53,27 @@ public class EditarDuenoBean implements Serializable {
 	public void onCellEdit(CellEditEvent event) {
 		Object oldValue = event.getOldValue();
 		Object newValue = event.getNewValue();
-
+		
 		if (newValue != null && !newValue.equals(oldValue)) {
+			Dueno d = listaDuenos.get(event.getRowIndex());
+			String nombreColumna = event.getColumn().getHeaderText();
+			switch(nombreColumna)
+			{
+				case "Nombre":
+					d.setNombre((String) newValue);
+					break;
+				case "Telefono":
+					d.setTelefono((int) newValue);
+					break;
+			}
+			duenoFacade.edit(d);
 		}
+	}
+
+	public void eliminarDueno(int duenoId){
+		Dueno d = duenoFacade.find(duenoId);
+		listaDuenos.remove(d);
+		duenoFacade.remove(d);
 	}
 
 	public int getRut() {
