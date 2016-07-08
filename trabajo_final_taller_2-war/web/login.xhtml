@@ -30,8 +30,8 @@
                         <p:outputLabel value=""/>
                     </h:panelGrid>
                     <h:panelGrid columns="1">
-                        <p:password value="#{loginBean.usuarios.password}" style="width:240px" required="true"/>
                         <p:inputText value="#{loginBean.usuarios.username}" style="width:240px" required="true"  />                    
+                        <p:password value="#{loginBean.usuarios.password}" style="width:240px" required="true"/>
                         <p:commandButton value="Ingresar" 
                                          action="#{loginBean.ingresoLogin()}"
                                          icon="ui-icon-person"
