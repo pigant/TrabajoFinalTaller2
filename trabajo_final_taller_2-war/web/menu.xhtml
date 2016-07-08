@@ -14,15 +14,19 @@
                 <h:panelGrid columns="1" style="Center">
 
                     <p:commandButton value="Ingreso cliente nuevo" 
+				     action="#{menuBean.ingresarCliente()}"
                                      style="width: 120%"/>
                     <br></br>
                     <p:commandButton value="Ingreso sólo mascota" 
+				     action="#{menuBean.ingresarMascota()}"
                                      style="width: 120%"/>
                     <br></br>
-                    <p:commandButton value="Ingreso ficha mascota" 
+                    <p:commandButton value="Ingreso ficha" 
+				     action="#{menuBean.ingresarFicha()}"
                                      style="width: 120%"/>
                     <br></br>
                     <p:commandButton value="Ver Fichas" 
+				     action="#{menuBean.verFichas()}"
                                      style="width: 120%"/>
                     
                 </h:panelGrid>

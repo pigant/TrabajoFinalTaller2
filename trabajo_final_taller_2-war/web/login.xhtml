@@ -16,12 +16,12 @@
                 <h:panelGrid columns="2" style=" text-align: center; width: 55%; margin:0 auto" >
                     
                     <p:outputLabel value="Usuario"  />
-                    <p:inputText value="" required="true"  />                    
+                    <p:inputText value="#{loginBean.usuarios.username}" required="true"  />                    
                     <p:outputLabel value="Contraseña"/>
-                    <p:password value="" required="true"/>
+                    <p:password value="#{loginBean.usuarios.password}" required="true"/>
                     <p:outputLabel value=""/>
                     <p:commandButton value="Ingresar" 
-                                     
+				     action="#{loginBean.ingresoLogin()}"
                                      icon="ui-icon-person"
                                      style="width: 80%"/>
                 </h:panelGrid>

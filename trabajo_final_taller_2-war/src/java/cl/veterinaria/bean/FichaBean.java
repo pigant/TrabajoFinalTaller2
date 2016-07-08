@@ -41,10 +41,21 @@ public class FichaBean implements Serializable {
 	public void init() {
 		Map<String, String> mapa = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		if (mapa.containsKey("mascota")) {
-			int mascota = Integer.valueOf(mapa.get("mascota"));
-			listaFichas = fichaFacade.findByMascotaId(mascota);
+			int mascotaId = Integer.valueOf(mapa.get("mascota"));
+			listaFichas = fichaFacade.findByMascotaId(mascotaId);
+			mascota = mascotaFacade.find(mascotaId);
 		}
 
+	}
+
+	public String parsearSexo(){
+		switch(mascota.getSexo()){
+			case 'M':
+				return "Masculino";
+			case 'F':
+				return "Femenino";
+		}
+		return "";
 	}
 
 	public String verDetalle(int detalleId) {

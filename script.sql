@@ -19,11 +19,20 @@ create table dueno (
 create table mascota (
 		mascota_id int auto_increment,
 		nombre varchar(60),
+		raza varchar(60),
 		sexo char(1),
 		fecha_nacimiento date,
 		dueno_id int,
+		tipo_animal_id int,
 		constraint primary key (mascota_id),
-		constraint foreign key (dueno_id) references dueno(rut)
+		constraint foreign key (dueno_id) references dueno(rut),
+		constraint foreign key (tipo_animal_id) references tipo_animal(tipo_animal_id)
+		);
+
+create table tipo_animal (
+		tipo_animal_id int,
+		nombre varchar(60),
+		constraint primary key (tipo_animal_id)
 		);
 
 create table ficha (

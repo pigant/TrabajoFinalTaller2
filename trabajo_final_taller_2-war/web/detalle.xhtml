@@ -5,9 +5,15 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
+	<script>
+                function volver() {
+			var ll = document.referrer;
+			document.location = ll;
+                }
+	</script>
     </h:head>
-     <h:body>
-         <p align="right"><p:link  outcome="menu" value="Menu"/> | <p:link  outcome="ficha" value="Volver a Ficha"/> | <p:link outcome="login" value="Logout"/></p>
+    <h:body>
+	<p align="right"><p:link  outcome="menu" value="Menu"/> | <p:link  value="Volver a Ficha" onmousedown="volver()"/> | <p:link outcome="login" value="Logout"/></p>
 
         <h:form id="detalle" >
             <p:messages autoUpdate="true" />
@@ -15,13 +21,13 @@
                 <br></br>
                 <p:panelGrid columns="2">
                     <p:outputLabel value="Nombre Mascota : " style="float: right" />
-                    <p:outputLabel value=""/>
+                    <p:outputLabel value="#{detalleBean.ficha.mascotaId.nombre}"/>
                     <p:outputLabel value="Fecha : " style="float: right" />
-                    <p:outputLabel value=""/>
+                    <p:outputLabel value="#{detalleBean.ficha.fecha}"/>
                     <p:outputLabel value="Diagnóstico : " style="float: right" />
-                    <p:outputLabel value=""/>
+                    <p:outputLabel value="#{detalleBean.ficha.diagnostico}"/>
                     <p:outputLabel value="Recetario : " style="float: right" />
-                    <p:outputLabel value=""/>
+                    <p:outputLabel value="#{detalleBean.ficha.recetario}"/>
                 </p:panelGrid>
             </p:panel>
         </h:form>

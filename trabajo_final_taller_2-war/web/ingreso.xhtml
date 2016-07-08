@@ -19,7 +19,7 @@
                         <p:ajax listener="#{ingresoBean.buscarMascotas()}" event="keyup" update="combobox"/>
                     </p:inputText>
                     <p:commandButton value="Buscar mascota"/>
-                    <p:selectOneMenu id="combobox" value="#{ingresoBean.mascotaId}" style="width: 110%">
+                    <p:selectOneMenu id="combobox" value="#{ingresoBean.mascotaId}">
                         <f:selectItem itemLabel="Seleccione mascota " itemValue="#{null}" />
                         <f:selectItems value="#{ingresoBean.listaMascota}" var="lm"
                                        itemLabel="#{lm.nombre}" itemValue="#{lm.mascotaId}"/>
@@ -30,10 +30,11 @@
                 <br></br>
                 <p:panelGrid columns="2">
                     <p:outputLabel value="Diagnóstico : "/>
-                    <p:outputLabel value=""/>
+                    <p:inputTextarea value="#{ingresoBean.diagnostico}"/>
                     <p:outputLabel value="Recetario : "/>
-                    <p:outputLabel value=""/>
+                    <p:inputTextarea value="#{ingresoBean.receta}"/>
                 </p:panelGrid>
+		<p:commandButton value="Ingreso" action="#{ingresoBean.ingresarFicha()}"/>
             </p:panel>
         </h:form>
     </h:body>

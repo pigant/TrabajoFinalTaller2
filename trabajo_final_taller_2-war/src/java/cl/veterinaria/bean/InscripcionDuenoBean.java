@@ -44,12 +44,12 @@ public class InscripcionDuenoBean implements Serializable {
 			d.setTelefono(telefono);
 			duenoFacade.create(d);
 			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage("Dueno ingresado correctamente"));
+					new FacesMessage("Dueño ingresado correctamente"));
 			return "menu";
 		} //Incorrecto
 		else {
 			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Datos invalidos", "Debe rellenar todos los datos y no se pueden repetir los rut"));
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Datos inválidos", "Debe rellenar todos los datos y no se pueden repetir los rut"));
 			return "";
 		}
 	}

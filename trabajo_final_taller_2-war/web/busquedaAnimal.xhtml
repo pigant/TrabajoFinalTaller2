@@ -15,25 +15,26 @@
             <p:panel  style=" text-align: center; width: 40%; margin: auto">
                 <p:panelGrid columns="3" style="Center">
                     <p:outputLabel value="Nombre Mascota" />
-                    <p:inputText value="" />
-                    <p:commandButton value="Buscar"/>
-                </p:panelGrid>
-                <br></br>
-                <p:dataTable   style="Center">
-                    <p:column headerText="Nombre mascota">
-                        <p:outputLabel value="" />
-                    </p:column>
-                    <p:column headerText="Rut Cliente">
-                        <p:outputLabel value="" />
-                    </p:column>
-                    <p:column headerText="ver ficha">
-                        <p:commandButton>
+                    <p:inputText value="#{busquedaAnimalBean.nombre}" />
+                    <p:commandButton value="Buscar" actionListener="#{busquedaAnimalBean.buscarMascota()}" update=":tabla"/>
 
-                        </p:commandButton>
-                    </p:column>
-                </p:dataTable>
+                </p:panelGrid>
             </p:panel>
         </h:form>
+	<h:form id="tabla">
+	    <br></br>
+	    <p:dataTable style="Center" value="#{busquedaAnimalBean.listaMascotas}" var="m">
+		<p:column headerText="Nombre mascota">
+		    <p:outputLabel value="#{m.nombre}" />
+		</p:column>
+		<p:column headerText="Rut Cliente">
+		    <p:outputLabel value="#{m.duenoId.rut}" />
+		</p:column>
+		<p:column headerText="ver ficha">
+		    <p:commandButton  icon="ui-icon-search" action="#{busquedaAnimalBean.verFicha(m.mascotaId)}"/>
+		</p:column>
+	    </p:dataTable>
+	</h:form>
     </h:body>
 </html>
 

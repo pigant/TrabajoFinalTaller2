@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -16,20 +17,24 @@
                 <p:panelGrid columns="1">
                     <p:panelGrid columns="2">
                         <p:outputLabel value="Nombre: " style="float: right" />
-                        <p:outputLabel value=""/>
+                        <p:inputText value="#{ingresoMascotaBean.nombre}"/>
                         <p:outputLabel value="Raza : " style="float: right" />
-                        <p:outputLabel value=""/>
+                        <p:inputText value="#{ingresoMascotaBean.raza}"/>
                         <p:outputLabel value="Sexo : " style="float: right" />
-                        <p:outputLabel value=""/>
+			<p:selectOneRadio value="#{ingresoMascotaBean.sexo}">
+			    <f:selectItem itemLabel="Masculino" itemValue="M"/>
+			    <f:selectItem itemLabel="Femenino" itemValue="F"/>
+			</p:selectOneRadio>
                         <p:outputLabel value="Fecha Nacimiento : " style="float: right" />
-                        <p:outputLabel value=""/>
+			<!-- calendario aca -->
+			<p:calendar id="calendario" value="#{ingresoMascotaBean.fechaNacimiento}" showOn="button"/>
                     </p:panelGrid>
                     <p:panelGrid columns="3">
                         <p:outputLabel value="Dueño :  " />
-                        <p:inputText />
-                        <p:commandButton value="Buscar"/>
+                        <p:inputText value="#{ingresoMascotaBean.duenoId}"/>
+                        <p:commandButton value="Buscar" actionListener="#{ingresoMascotaBean.buscarDueno()}"/>
                     </p:panelGrid>
-                    <p:commandButton value="Ingreso"/>
+                    <p:commandButton value="Ingreso" action="#{ingresoMascotaBean.ingresoMascota()}" update="inscripcionMascota"/>
                 </p:panelGrid>
             </p:panel>
         </h:form>

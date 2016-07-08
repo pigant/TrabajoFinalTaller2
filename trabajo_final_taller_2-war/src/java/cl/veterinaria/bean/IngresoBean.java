@@ -33,7 +33,6 @@ public class IngresoBean implements Serializable {
 	@EJB
 	private FichaFacadeLocal fichaFacade;
 
-	private Dueno dueno;
 	private int duenoId;
 	private int mascotaId;
 	private Mascota mascota;
@@ -59,6 +58,8 @@ public class IngresoBean implements Serializable {
 	public String ingresarFicha() {
 		//Comprobaciones
 		boolean correcto = true;
+		correcto &= mascota!=null;
+		correcto &= !diagnostico.equals("");
 		//Positivo
 		if (correcto) {
 			Ficha f = new Ficha();
@@ -73,17 +74,9 @@ public class IngresoBean implements Serializable {
 		} //negativo
 		else {
 			FacesContext.getCurrentInstance()
-					.addMessage(null, new FacesMessage("Datos faltantes"));
+					.addMessage(null, new FacesMessage("Complete todos los campos"));
 			return "";
 		}
-	}
-
-	public Dueno getDueno() {
-		return dueno;
-	}
-
-	public void setDueno(Dueno dueno) {
-		this.dueno = dueno;
 	}
 
 	public Mascota getMascota() {

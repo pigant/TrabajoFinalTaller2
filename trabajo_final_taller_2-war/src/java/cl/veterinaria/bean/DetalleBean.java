@@ -38,4 +38,12 @@ public class DetalleBean implements Serializable {
 		}
 	}
 
+	public Ficha getFicha() {
+		return ficha;
+	}
+
+	public void setFicha(Ficha ficha) {
+		this.ficha = ficha;
+	}
+
 }

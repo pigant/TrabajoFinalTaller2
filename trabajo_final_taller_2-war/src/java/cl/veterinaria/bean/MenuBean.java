@@ -30,4 +30,8 @@ public class MenuBean implements Serializable {
 		return "ingreso";
 	}
 
+	public String verFichas(){
+		return "busquedaAnimal";
+	}
+
 }
