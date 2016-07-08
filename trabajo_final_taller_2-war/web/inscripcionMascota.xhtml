@@ -17,25 +17,29 @@
                 <p:panelGrid columns="1">
                     <p:panelGrid columns="2">
                         <p:outputLabel value="Nombre: " style="float: right" />
-                        <p:inputText value="#{ingresoMascotaBean.nombre}"/>
+                        <p:inputText value="#{ingresoMascotaBean.nombre}" style="width: 100%"/>
+                        <p:outputLabel value="Clase Animal: " style="float: right" />
+						<p:selectOneMenu value="#{ingresoMascotaBean.tipoAnimalId}" style="width: 100%">
+							<f:selectItems var="t" value="#{ingresoMascotaBean.clasesAnimales}"
+										   itemLabel="#{t.nombre}" itemValue="#{t.tipoAnimalId}"/>
+						</p:selectOneMenu>
                         <p:outputLabel value="Raza : " style="float: right" />
-                        <p:inputText value="#{ingresoMascotaBean.raza}"/>
+                        <p:inputText value="#{ingresoMascotaBean.raza}" style="width: 100%"/>
                         <p:outputLabel value="Sexo : " style="float: right" />
-			<p:selectOneRadio value="#{ingresoMascotaBean.sexo}">
-			    <f:selectItem itemLabel="Masculino" itemValue="M"/>
-			    <f:selectItem itemLabel="Femenino" itemValue="F"/>
-			</p:selectOneRadio>
+						<p:selectOneRadio value="#{ingresoMascotaBean.sexo}">
+							<f:selectItem itemLabel="Masculino" itemValue="M"/>
+							<f:selectItem itemLabel="Femenino" itemValue="F"/>
+						</p:selectOneRadio>
                         <p:outputLabel value="Fecha Nacimiento : " style="float: right" />
-			<!-- calendario aca -->
-			<p:calendar id="calendario" value="#{ingresoMascotaBean.fechaNacimiento}" showOn="button"/>
-                    </p:panelGrid>
-                    <p:panelGrid columns="3">
+						<p:calendar id="calendario" value="#{ingresoMascotaBean.fechaNacimiento}" 
+									pattern="dd-MM-yyyy" mask="true" navigator="true" />
                         <p:outputLabel value="Dueño :  " />
-                        <p:inputText value="#{ingresoMascotaBean.duenoId}"/>
-                        <p:commandButton value="Buscar" actionListener="#{ingresoMascotaBean.buscarDueno()}"/>
+                        <p:inputText value="#{ingresoMascotaBean.duenoId}" style="width: 100%">
+							<p:ajax event="keyup" listener="#{ingresoMascotaBean.buscarDueno()}"/>
+						</p:inputText>
                     </p:panelGrid>
-                    <p:commandButton value="Ingreso" action="#{ingresoMascotaBean.ingresoMascota()}" update="inscripcionMascota"/>
                 </p:panelGrid>
+				<p:commandButton value="Ingreso" action="#{ingresoMascotaBean.ingresoMascota()}" update="inscripcionMascota"/>
             </p:panel>
         </h:form>
     </h:body>

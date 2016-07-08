@@ -38,6 +38,7 @@ public class IngresoBean implements Serializable {
 	private Mascota mascota;
 	private String diagnostico;
 	private String receta;
+	private String duenoEncontrado = "Dueño no encontrado ...";
 
 	private List<Mascota> listaMascota = new ArrayList<>();
 
@@ -49,6 +50,11 @@ public class IngresoBean implements Serializable {
 
 	public void buscarMascotas() {
 		listaMascota = mascotaFacade.findByDuenoId(duenoId);
+		if (listaMascota.size()>0) {
+			duenoEncontrado = "Seleccione mascota ...";
+		} else {
+			duenoEncontrado = "Dueño no encontrado ...";
+		}
 	}
 
 	public void seleccionarMascota() {
@@ -58,7 +64,7 @@ public class IngresoBean implements Serializable {
 	public String ingresarFicha() {
 		//Comprobaciones
 		boolean correcto = true;
-		correcto &= mascota!=null;
+		correcto &= mascota != null;
 		correcto &= !diagnostico.equals("");
 		//Positivo
 		if (correcto) {
@@ -121,6 +127,14 @@ public class IngresoBean implements Serializable {
 
 	public void setMascotaId(int mascotaId) {
 		this.mascotaId = mascotaId;
+	}
+
+	public String getDuenoEncontrado() {
+		return duenoEncontrado;
+	}
+
+	public void setDuenoEncontrado(String duenoEncontrado) {
+		this.duenoEncontrado = duenoEncontrado;
 	}
 
 }

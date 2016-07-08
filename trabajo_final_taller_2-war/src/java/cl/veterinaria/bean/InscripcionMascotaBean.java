@@ -2,10 +2,14 @@ package cl.veterinaria.bean;
 
 import cl.veterinaria.entity.Dueno;
 import cl.veterinaria.entity.Mascota;
+import cl.veterinaria.entity.TipoAnimal;
 import cl.veterinaria.service.DuenoFacadeLocal;
 import cl.veterinaria.service.MascotaFacadeLocal;
+import cl.veterinaria.service.TipoAnimalFacadeLocal;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -21,12 +25,17 @@ import javax.faces.view.ViewScoped;
 public class InscripcionMascotaBean implements Serializable {
 
 	@EJB
+	private TipoAnimalFacadeLocal tipoAnimalFacade;
+
+	@EJB
 	private MascotaFacadeLocal mascotaFacade;
 
 	@EJB
 	private DuenoFacadeLocal duenoFacade;
 
 	private String nombre;
+	private int tipoAnimalId;
+	private List<TipoAnimal> clasesAnimales;
 	private String raza;
 	private char sexo;
 	private Date fechaNacimiento;
@@ -38,6 +47,11 @@ public class InscripcionMascotaBean implements Serializable {
 	 */
 	public InscripcionMascotaBean() {
 		sexo = 'M';
+	}
+
+	@PostConstruct
+	public void init(){
+		clasesAnimales = tipoAnimalFacade.findAll();
 	}
 
 	public String ingresoMascota() {
@@ -53,6 +67,8 @@ public class InscripcionMascotaBean implements Serializable {
 			m.setSexo(sexo);
 			m.setFechaNacimiento(fechaNacimiento);
 			m.setDuenoId(dueno);
+			m.setTipoAnimalId(tipoAnimalFacade.find(tipoAnimalId));
+			m.setRaza(raza);
 			mascotaFacade.create(m);
 			FacesContext.getCurrentInstance().
 					addMessage(null, new FacesMessage("Mascota ingresada"));
@@ -124,6 +140,22 @@ public class InscripcionMascotaBean implements Serializable {
 
 	public void setDuenoId(int duenoId) {
 		this.duenoId = duenoId;
+	}
+
+	public int getTipoAnimalId() {
+		return tipoAnimalId;
+	}
+
+	public void setTipoAnimalId(int tipoAnimalId) {
+		this.tipoAnimalId = tipoAnimalId;
+	}
+
+	public List<TipoAnimal> getClasesAnimales() {
+		return clasesAnimales;
+	}
+
+	public void setClasesAnimales(List<TipoAnimal> clasesAnimales) {
+		this.clasesAnimales = clasesAnimales;
 	}
 
 }

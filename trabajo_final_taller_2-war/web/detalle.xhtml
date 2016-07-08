@@ -2,18 +2,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
-	<script>
-                function volver() {
-			var ll = document.referrer;
-			document.location = ll;
-                }
-	</script>
+		<script>
+            function volver() {
+                var ll = document.referrer;
+                document.location = ll;
+            }
+            function prevent(event) {
+                event.preventDefault();
+            }
+		</script>
     </h:head>
     <h:body>
-	<p align="right"><p:link  outcome="menu" value="Menu"/> | <p:link  value="Volver a Ficha" onmousedown="volver()"/> | <p:link outcome="login" value="Logout"/></p>
+		<p align="right"><p:link  outcome="menu" value="Menu"/> | <p:link  value="Volver a Ficha" onclick="prevent(event)" onmousedown="volver()"/> | <p:link outcome="login" value="Logout"/></p>
 
         <h:form id="detalle" >
             <p:messages autoUpdate="true" />
@@ -22,8 +26,12 @@
                 <p:panelGrid columns="2">
                     <p:outputLabel value="Nombre Mascota : " style="float: right" />
                     <p:outputLabel value="#{detalleBean.ficha.mascotaId.nombre}"/>
+                    <p:outputLabel value="Clase de animal : " style="float: right" />
+                    <p:outputLabel value="#{detalleBean.ficha.mascotaId.tipoAnimalId.nombre}"/>
                     <p:outputLabel value="Fecha : " style="float: right" />
-                    <p:outputLabel value="#{detalleBean.ficha.fecha}"/>
+                    <p:outputLabel value="#{detalleBean.ficha.fecha}">
+						<f:convertDateTime pattern="dd-MM-yyyy"/>
+					</p:outputLabel>
                     <p:outputLabel value="Diagnóstico : " style="float: right" />
                     <p:outputLabel value="#{detalleBean.ficha.diagnostico}"/>
                     <p:outputLabel value="Recetario : " style="float: right" />

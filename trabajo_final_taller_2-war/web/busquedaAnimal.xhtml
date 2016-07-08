@@ -12,12 +12,11 @@
 
         <h:form id="busquedaAnimal" >
             <p:messages autoUpdate="true" />
-            <p:panel  style=" text-align: center; width: 40%; margin: auto">
-                <p:panelGrid columns="3" style="Center">
+            <p:panel  style=" text-align: center; margin: auto">
+                <p:panelGrid columns="3" style="width: 100%">
                     <p:outputLabel value="Nombre Mascota" />
                     <p:inputText value="#{busquedaAnimalBean.nombre}" />
                     <p:commandButton value="Buscar" actionListener="#{busquedaAnimalBean.buscarMascota()}" update=":tabla"/>
-
                 </p:panelGrid>
             </p:panel>
         </h:form>
@@ -31,7 +30,7 @@
 		    <p:outputLabel value="#{m.duenoId.rut}" />
 		</p:column>
 		<p:column headerText="ver ficha">
-		    <p:commandButton  icon="ui-icon-search" action="#{busquedaAnimalBean.verFicha(m.mascotaId)}"/>
+		    <p:commandButton  icon="ui-icon-search" action="#{busquedaAnimalBean.verFicha(m.mascotaId)}" style="display: block; margin: auto"/>
 		</p:column>
 	    </p:dataTable>
 	</h:form>

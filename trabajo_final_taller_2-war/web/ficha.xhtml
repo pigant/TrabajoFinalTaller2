@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -15,12 +16,16 @@
                 <p:panelGrid columns="2" style="text-align: center; width: 70%; ">
                     <p:outputLabel value="Nombre mascota : " style="float:  right" />
                     <p:outputLabel value="#{fichaBean.mascota.nombre}" style="float: left"/>
+                    <p:outputLabel value="Clase animal : " style="float:  right" />
+                    <p:outputLabel value="#{fichaBean.mascota.tipoAnimalId.nombre}" style="float: left" />
                     <p:outputLabel value="Raza : " style="float:  right" />
-                    <p:outputLabel value="reparar la raza!!!" style="float: left" />
+                    <p:outputLabel value="#{fichaBean.mascota.raza}" style="float: left" />
                     <p:outputLabel value="Sexo : " style="float:  right" />
                     <p:outputLabel value="#{fichaBean.parsearSexo()}" style="float: left" />
                     <p:outputLabel value="Fecha Nacimiento : " style="float: right" />
-                    <p:outputLabel value="#{fichaBean.mascota.fechaNacimiento}" style="float: left" />
+                    <p:outputLabel value="#{fichaBean.mascota.fechaNacimiento}" style="float: left" >
+						<f:convertDateTime pattern="dd-MM-yyyy"/>
+					</p:outputLabel>
                     <p:outputLabel value="Dueño : " style="float: right" />
                     <p:outputLabel value="#{fichaBean.mascota.duenoId.nombre}" style="float: left" />
                 </p:panelGrid>
@@ -31,15 +36,15 @@
                         <p:outputLabel value="#{f.fichaId}" />
                     </p:column>
                     <p:column headerText="Fecha">
-                        <p:outputLabel value="#{f.fecha}" />
+                        <p:outputLabel value="#{f.fecha}" >
+							<f:convertDateTime pattern="dd-MM-yyyy"/>
+						</p:outputLabel>
                     </p:column>
-                    <p:column headerText="Ver Detalle">
-			<p:commandButton  icon="ui-icon-search" action="#{fichaBean.verDetalle(f.fichaId)}"/>
+                    <p:column headerText="Ver Detalle" >
+						<p:commandButton  icon="ui-icon-search" action="#{fichaBean.verDetalle(f.fichaId)}"
+										  style="display: block; margin: auto"/>
                     </p:column>
                 </p:dataTable>
-
-
-
             </p:panel>
         </h:form>
     </h:body>
