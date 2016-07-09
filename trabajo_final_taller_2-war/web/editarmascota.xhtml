@@ -5,14 +5,16 @@
 	  xmlns:p="http://primefaces.org/ui"
 	  xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Editar Mascota</title>
     </h:head>
     <h:body>
-		<p align="right">
-			<p:link  outcome="menu" value="Menu"/> 
-		</p>
+        <h:panelGroup layout="block" style="width:80%; margin: 0 auto; text-align: center;">
+            <p align="right"><p:link  outcome="menu" value="Volver a Menu"/></p>
+            <p:graphicImage  style="margin: 0 auto;" url="./photos/banner.jpg"/>
+            <h:panelGroup layout="block" style="width:80%; margin: 0 auto; text-align: center;">
+            <p align="right"></p>
 		<h:form id="formulario">
-			<p:panelGrid columns="1">
+			<h:panelGrid columns="1">
 				<p:dataTable id="tabla" editable="true" var="m" value="#{editarMascotaBean.listaMascota}" editMode="cell">
 					<p:ajax event="cellEdit" listener="#{editarMascotaBean.onCellEdit}"/>
 					<p:column headerText="Nombre">
@@ -37,23 +39,6 @@
 						</p:cellEditor>
 					</p:column>
 
-					<p:column headerText="Sexo">
-						<p:cellEditor>
-							<f:facet name="output">
-								<p:selectOneRadio value="#{m.sexo}">
-									<f:selectItem itemLabel="Masculino" itemValue="M"/>
-									<f:selectItem itemLabel="Femenino" itemValue="F"/>
-								</p:selectOneRadio>
-							</f:facet>
-							<f:facet name="input">
-								<p:selectOneRadio value="#{m.sexo}">
-									<f:selectItem itemLabel="Masculino" itemValue="M"/>
-									<f:selectItem itemLabel="Femenino" itemValue="F"/>
-								</p:selectOneRadio>
-							</f:facet>
-						</p:cellEditor>
-					</p:column>
-
 					<p:column headerText="Fecha nacimiento">
 						<p:cellEditor>
 							<f:facet name="output">
@@ -72,8 +57,10 @@
 						<p:commandButton icon="ui-icon-trash" actionListener="#{editarMascotaBean.eliminarMascota(m.mascotaId)}" update=":formulario:tabla"/>
 					</p:column>
 				</p:dataTable>
-			</p:panelGrid>
+			</h:panelGrid>
 		</h:form>
+            </h:panelGroup>
+        </h:panelGroup>
     </h:body>
 </html>
 

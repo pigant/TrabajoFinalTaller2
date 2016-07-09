@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cl.veterinaria.entity;
 
 import java.io.Serializable;
@@ -23,84 +18,84 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Sistemas
+ * @author Rodrigo
  */
 @Entity
 @Table(name = "tipo_animal")
 @XmlRootElement
 @NamedQueries({
-	@NamedQuery(name = "TipoAnimal.findAll", query = "SELECT t FROM TipoAnimal t"),
-	@NamedQuery(name = "TipoAnimal.findByTipoAnimalId", query = "SELECT t FROM TipoAnimal t WHERE t.tipoAnimalId = :tipoAnimalId"),
-	@NamedQuery(name = "TipoAnimal.findByNombre", query = "SELECT t FROM TipoAnimal t WHERE t.nombre = :nombre")})
+    @NamedQuery(name = "TipoAnimal.findAll", query = "SELECT t FROM TipoAnimal t"),
+    @NamedQuery(name = "TipoAnimal.findByTipoAnimalId", query = "SELECT t FROM TipoAnimal t WHERE t.tipoAnimalId = :tipoAnimalId"),
+    @NamedQuery(name = "TipoAnimal.findByNombre", query = "SELECT t FROM TipoAnimal t WHERE t.nombre = :nombre")})
 public class TipoAnimal implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	@Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Basic(optional = false)
-        @Column(name = "tipo_animal_id")
-	private Integer tipoAnimalId;
-	@Size(max = 60)
-        @Column(name = "nombre")
-	private String nombre;
-	@OneToMany(mappedBy = "tipoAnimalId")
-	private List<Mascota> mascotaList;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "tipo_animal_id")
+    private Integer tipoAnimalId;
+    @Size(max = 60)
+    @Column(name = "nombre")
+    private String nombre;
+    @OneToMany(mappedBy = "tipoAnimalId")
+    private List<Mascota> mascotaList;
 
-	public TipoAnimal() {
-	}
+    public TipoAnimal() {
+    }
 
-	public TipoAnimal(Integer tipoAnimalId) {
-		this.tipoAnimalId = tipoAnimalId;
-	}
+    public TipoAnimal(Integer tipoAnimalId) {
+        this.tipoAnimalId = tipoAnimalId;
+    }
 
-	public Integer getTipoAnimalId() {
-		return tipoAnimalId;
-	}
+    public Integer getTipoAnimalId() {
+        return tipoAnimalId;
+    }
 
-	public void setTipoAnimalId(Integer tipoAnimalId) {
-		this.tipoAnimalId = tipoAnimalId;
-	}
+    public void setTipoAnimalId(Integer tipoAnimalId) {
+        this.tipoAnimalId = tipoAnimalId;
+    }
 
-	public String getNombre() {
-		return nombre;
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	@XmlTransient
-	public List<Mascota> getMascotaList() {
-		return mascotaList;
-	}
+    @XmlTransient
+    public List<Mascota> getMascotaList() {
+        return mascotaList;
+    }
 
-	public void setMascotaList(List<Mascota> mascotaList) {
-		this.mascotaList = mascotaList;
-	}
+    public void setMascotaList(List<Mascota> mascotaList) {
+        this.mascotaList = mascotaList;
+    }
 
-	@Override
-	public int hashCode() {
-		int hash = 0;
-		hash += (tipoAnimalId != null ? tipoAnimalId.hashCode() : 0);
-		return hash;
-	}
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (tipoAnimalId != null ? tipoAnimalId.hashCode() : 0);
+        return hash;
+    }
 
-	@Override
-	public boolean equals(Object object) {
-		// TODO: Warning - this method won't work in the case the id fields are not set
-		if (!(object instanceof TipoAnimal)) {
-			return false;
-		}
-		TipoAnimal other = (TipoAnimal) object;
-		if ((this.tipoAnimalId == null && other.tipoAnimalId != null) || (this.tipoAnimalId != null && !this.tipoAnimalId.equals(other.tipoAnimalId))) {
-			return false;
-		}
-		return true;
-	}
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof TipoAnimal)) {
+            return false;
+        }
+        TipoAnimal other = (TipoAnimal) object;
+        if ((this.tipoAnimalId == null && other.tipoAnimalId != null) || (this.tipoAnimalId != null && !this.tipoAnimalId.equals(other.tipoAnimalId))) {
+            return false;
+        }
+        return true;
+    }
 
-	@Override
-	public String toString() {
-		return "cl.veterinaria.entity.TipoAnimal[ tipoAnimalId=" + tipoAnimalId + " ]";
-	}
-	
+    @Override
+    public String toString() {
+        return "cl.veterinaria.entity.TipoAnimal[ tipoAnimalId=" + tipoAnimalId + " ]";
+    }
+    
 }

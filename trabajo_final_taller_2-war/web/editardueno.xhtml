@@ -5,14 +5,16 @@
 	  xmlns:p="http://primefaces.org/ui"
 	  xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Editar Dueno</title>
     </h:head>
     <h:body>
-		<p align="right">
-			<p:link  outcome="menu" value="Menu"/> 
-		</p>
+        
+        <h:panelGroup layout="block" style="width:80%; margin: 0 auto; text-align: center;">
+            <p align="right"><p:link  outcome="menu" value="Volver a Menu"/></p>
+            <p:graphicImage  style="margin: 0 auto;" url="./photos/banner.jpg"/>
+		
 		<h:form id="formulario">
-			<p:panelGrid columns="1">
+			<h:panelGrid columns="1">
 				<p:dataTable id="tabla" editable="true" var="d" value="#{editarDuenoBean.listaDuenos}" editMode="cell">
 					<p:ajax event="cellEdit" listener="#{editarDuenoBean.onCellEdit}"/>
 					<p:column headerText="Nombre">
@@ -41,8 +43,9 @@
 						<p:commandButton icon="ui-icon-trash" actionListener="#{editarDuenoBean.eliminarDueno(d.rut)}" update=":formulario:tabla"/>
 					</p:column>
 				</p:dataTable>
-			</p:panelGrid>
+			</h:panelGrid>
 		</h:form>
+        </h:panelGroup>    
     </h:body>
 </html>
 
