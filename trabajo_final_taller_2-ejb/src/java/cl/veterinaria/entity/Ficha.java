@@ -21,109 +21,109 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author ignacio
+ * @author Rodrigo
  */
 @Entity
 @Table(name = "ficha")
 @XmlRootElement
 @NamedQueries({
-	@NamedQuery(name = "Ficha.findAll", query = "SELECT f FROM Ficha f"),
-	@NamedQuery(name = "Ficha.findByFichaId", query = "SELECT f FROM Ficha f WHERE f.fichaId = :fichaId"),
-	@NamedQuery(name = "Ficha.findByMascotaId", query = "SELECT f FROM Ficha f WHERE f.mascotaId.mascotaId = :mascotaId"),
-	@NamedQuery(name = "Ficha.findByFecha", query = "SELECT f FROM Ficha f WHERE f.fecha = :fecha")})
+    @NamedQuery(name = "Ficha.findAll", query = "SELECT f FROM Ficha f"),
+    @NamedQuery(name = "Ficha.findByFichaId", query = "SELECT f FROM Ficha f WHERE f.fichaId = :fichaId"),
+    @NamedQuery(name = "Ficha.findByMascotaId", query = "SELECT f FROM Ficha f WHERE f.mascotaId.mascotaId = :mascotaId"),
+    @NamedQuery(name = "Ficha.findByFecha", query = "SELECT f FROM Ficha f WHERE f.fecha = :fecha")})
 public class Ficha implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Basic(optional = false)
-	@Column(name = "ficha_id")
-	private Integer fichaId;
-	@Lob
-	@Size(max = 65535)
-	@Column(name = "diagnostico")
-	private String diagnostico;
-	@Lob
-	@Size(max = 65535)
-	@Column(name = "recetario")
-	private String recetario;
-	@Column(name = "fecha")
-	@Temporal(TemporalType.DATE)
-	private Date fecha;
-	@JoinColumn(name = "mascota_id", referencedColumnName = "mascota_id")
-	@ManyToOne
-	private Mascota mascotaId;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "ficha_id")
+    private Integer fichaId;
+    @Lob
+    @Size(max = 65535)
+    @Column(name = "diagnostico")
+    private String diagnostico;
+    @Lob
+    @Size(max = 65535)
+    @Column(name = "recetario")
+    private String recetario;
+    @Column(name = "fecha")
+    @Temporal(TemporalType.DATE)
+    private Date fecha;
+    @JoinColumn(name = "mascota_id", referencedColumnName = "mascota_id")
+    @ManyToOne
+    private Mascota mascotaId;
 
-	public Ficha() {
-	}
+    public Ficha() {
+    }
 
-	public Ficha(Integer fichaId) {
-		this.fichaId = fichaId;
-	}
+    public Ficha(Integer fichaId) {
+        this.fichaId = fichaId;
+    }
 
-	public Integer getFichaId() {
-		return fichaId;
-	}
+    public Integer getFichaId() {
+        return fichaId;
+    }
 
-	public void setFichaId(Integer fichaId) {
-		this.fichaId = fichaId;
-	}
+    public void setFichaId(Integer fichaId) {
+        this.fichaId = fichaId;
+    }
 
-	public String getDiagnostico() {
-		return diagnostico;
-	}
+    public String getDiagnostico() {
+        return diagnostico;
+    }
 
-	public void setDiagnostico(String diagnostico) {
-		this.diagnostico = diagnostico;
-	}
+    public void setDiagnostico(String diagnostico) {
+        this.diagnostico = diagnostico;
+    }
 
-	public String getRecetario() {
-		return recetario;
-	}
+    public String getRecetario() {
+        return recetario;
+    }
 
-	public void setRecetario(String recetario) {
-		this.recetario = recetario;
-	}
+    public void setRecetario(String recetario) {
+        this.recetario = recetario;
+    }
 
-	public Date getFecha() {
-		return fecha;
-	}
+    public Date getFecha() {
+        return fecha;
+    }
 
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
 
-	public Mascota getMascotaId() {
-		return mascotaId;
-	}
+    public Mascota getMascotaId() {
+        return mascotaId;
+    }
 
-	public void setMascotaId(Mascota mascotaId) {
-		this.mascotaId = mascotaId;
-	}
+    public void setMascotaId(Mascota mascotaId) {
+        this.mascotaId = mascotaId;
+    }
 
-	@Override
-	public int hashCode() {
-		int hash = 0;
-		hash += (fichaId != null ? fichaId.hashCode() : 0);
-		return hash;
-	}
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (fichaId != null ? fichaId.hashCode() : 0);
+        return hash;
+    }
 
-	@Override
-	public boolean equals(Object object) {
-		// TODO: Warning - this method won't work in the case the id fields are not set
-		if (!(object instanceof Ficha)) {
-			return false;
-		}
-		Ficha other = (Ficha) object;
-		if ((this.fichaId == null && other.fichaId != null) || (this.fichaId != null && !this.fichaId.equals(other.fichaId))) {
-			return false;
-		}
-		return true;
-	}
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Ficha)) {
+            return false;
+        }
+        Ficha other = (Ficha) object;
+        if ((this.fichaId == null && other.fichaId != null) || (this.fichaId != null && !this.fichaId.equals(other.fichaId))) {
+            return false;
+        }
+        return true;
+    }
 
-	@Override
-	public String toString() {
-		return "cl.veterinaria.entity.Ficha[ fichaId=" + fichaId + " ]";
-	}
-
+    @Override
+    public String toString() {
+        return "cl.veterinaria.entity.Ficha[ fichaId=" + fichaId + " ]";
+    }
+    
 }

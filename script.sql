@@ -31,8 +31,8 @@ create table mascota (
 		dueno_id int,
 		tipo_animal_id int,
 		constraint primary key (mascota_id),
-		constraint foreign key (dueno_id) references dueno(rut),
-		constraint foreign key (tipo_animal_id) references tipo_animal(tipo_animal_id)
+		constraint foreign key (dueno_id) references dueno(rut) on delete cascade,
+		constraint foreign key (tipo_animal_id) references tipo_animal(tipo_animal_id) on delete cascade
 		);
 
 create table ficha (
@@ -42,7 +42,7 @@ create table ficha (
 		fecha date,
 		mascota_id int,
 		constraint primary key (ficha_id),
-		constraint foreign key (mascota_id) references mascota(mascota_id)
+		constraint foreign key (mascota_id) references mascota(mascota_id) on delete cascade
 		);
 
 insert into user (username, password) values 
